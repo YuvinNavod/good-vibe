@@ -1,0 +1,21 @@
+:root {
+  /* Brand Colors from your logo */
+  --brand-yellow: #ffdb46;
+  --brand-orange: #ff5f2d;
+
+  /* "Calm" Palette */
+  --bg-cream: #fdfbf7;       /* Soft warm white for main background */
+  --bg-light-orange: #fff5eb; /* Very subtle orange tint for alternating sections */
+  --text-dark: #2c2c2c;      /* Soft charcoal instead of harsh black */
+  --text-muted: #6c757d;     /* Bootstrap muted grey */
+  
+  /* Spacing for a "breathable" layout */
+  --section-padding: 80px;
+}
+
+body {
+  background-color: var(--bg-cream);
+  color: var(--text-dark);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* We can pick a specific font later */
+  overflow-x: hidden; /* Prevent horizontal scroll from animations */
+}
