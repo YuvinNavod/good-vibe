@@ -71,7 +71,7 @@ const Vibrants = () => {
                   transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
                 >
                   <img 
-                    src="/assets/good.png" 
+                    src={process.env.PUBLIC_URL + "/assets/good.png"} 
                     alt="GoodVibe Introduction" 
                     style={{
                       maxWidth: '100%',
@@ -103,7 +103,7 @@ const Vibrants = () => {
                   style={{ position: 'relative', width: '100%', textAlign: 'center' }}
                 >
                   <motion.img 
-                    src="/assets/chart.png" 
+                    src={process.env.PUBLIC_URL + "/assets/chart.png"} 
                     alt="11 Vibrants Chart"
                     initial={{ scale: 0.9, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}
@@ -184,7 +184,7 @@ const Vibrants = () => {
           {vibrantsData.map((vibrant) => {
             const isCore = vibrant.category === 'Core';
             const accentColor = isCore ? 'var(--brand-yellow)' : 'var(--brand-orange)';
-            const imagePath = `/assets/${vibrant.id}.png`;
+            const imagePath = process.env.PUBLIC_URL + `/assets/${vibrant.id}.png`;
 
             return (
               <Row 

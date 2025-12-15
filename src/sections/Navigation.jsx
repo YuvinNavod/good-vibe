@@ -40,7 +40,7 @@ const Navigation = () => {
           {/* LOGO SECTION */}
           <Navbar.Brand href="#hero" className="d-flex align-items-center gap-2">
             <img 
-              src="/assets/logo.png" 
+              src={process.env.PUBLIC_URL + "/assets/logo.png"} 
               alt="GoodVibe Logo"
               style={{ 
                 height: '50px', 

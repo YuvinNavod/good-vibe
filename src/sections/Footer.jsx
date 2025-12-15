@@ -38,7 +38,7 @@ const Footer = () => {
             </p>
             
             <div className="d-flex justify-content-center gap-3 flex-wrap">
-              {/* UPDATED: Links to Socials Section */}
+              {/* Links to Socials Section */}
               <Button 
                 href="#socials"
                 variant="light" 
@@ -48,14 +48,14 @@ const Footer = () => {
                 Join Our Community
               </Button>
 
-              {/* UPDATED: Renamed to "View Packages" and links to Programs */}
+              {/* Engagement Forums*/}
               <Button 
                 href="#programs"
                 variant="outline-light" 
                 size="lg" 
                 style={{ borderRadius: '50px', padding: '12px 35px' }}
               >
-                View Packages
+                Engagement Forums
               </Button>
             </div>
           </motion.div>
