@@ -146,7 +146,7 @@ const Hero = () => {
       >
         {/* 1. The Rotating Ring (15.png) - Sits behind or around */}
         <motion.img
-          src="/assets/15.png"
+          src={process.env.PUBLIC_URL + "/assets/15.png"}
           alt="Rotating Aura"
           style={{
             position: 'absolute',
@@ -159,7 +159,7 @@ const Hero = () => {
 
         {/* 2. The Static Center (16.png) - Sits in the middle */}
         <img
-          src="/assets/16.png"
+          src={process.env.PUBLIC_URL + "/assets/16.png"}
           alt="Static Core"
           style={{
             position: 'absolute',

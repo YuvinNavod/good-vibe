@@ -90,7 +90,7 @@ const About = () => {
                transition={{ duration: 0.8 }}
              >
                 <img 
-                  src="/assets/17.png" 
+                  src={process.env.PUBLIC_URL + "/assets/17.png"} 
                   alt="Who We Are - Community" 
                   style={{
                     width: '100%'
@@ -128,7 +128,7 @@ const About = () => {
                transition={{ duration: 0.8 }}
              >
                 <img 
-                  src="/assets/18.png" 
+                  src={process.env.PUBLIC_URL + "/assets/18.png"} 
                   alt="Our Story - Breaking Free" 
                   style={{
                     width: '100%',
