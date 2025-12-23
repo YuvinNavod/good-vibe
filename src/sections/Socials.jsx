@@ -10,7 +10,7 @@ const Socials = () => {
       id: 1, 
       name: "WhatsApp", 
       icon: <FaWhatsapp size={30} />, 
-      // Replace YOUR_PHONE_NUMBER_HERE with real number (e.g., 94771234567)
+      // Replace YOUR_PHONE_NUMBER_HERE with real number
       url: "https://wa.me/YOUR_PHONE_NUMBER_HERE", 
       color: "#25D366" 
     },
@@ -18,7 +18,6 @@ const Socials = () => {
       id: 2, 
       name: "YouTube", 
       icon: <FaYoutube size={30} />, 
-      // Using search query to ensure it finds the channel if the handle varies slightly
       url: "https://www.youtube.com/results?search_query=Goodvibe+By+Wealthy+Nation", 
       color: "#FF0000" 
     },
@@ -50,27 +49,25 @@ const Socials = () => {
       id="socials"
       className="py-5"
       style={{ 
-        backgroundColor: '#fff', 
-        borderTop: '1px solid #f0f0f0' 
+        // REMOVED: backgroundColor: '#fff' -> Lets global orange gradient show
+        position: 'relative',
+        padding: '100px 0'
       }}
     >
       <Container>
         <Row className="align-items-center justify-content-center text-center">
           
-          <Col md={12} className="mb-4">
-            <h4 style={{ 
-              color: 'var(--text-dark)', 
-              fontWeight: '600', 
-              letterSpacing: '1px' 
-            }}>
+          <Col md={12} className="mb-5">
+            <h2 className="display-6 fw-bold" style={{ color: 'var(--brand-yellow)' }}>
               Join Our Vibrant Community Online
-            </h4>
+            </h2>
             <div 
               style={{ 
                 width: '60px', 
                 height: '3px', 
-                backgroundColor: 'var(--brand-yellow)', 
-                margin: '10px auto' 
+                backgroundColor: '#fff', // White divider
+                margin: '15px auto',
+                opacity: 0.5
               }} 
             />
           </Col>
@@ -91,13 +88,13 @@ const Socials = () => {
                   variants={{
                     rest: { 
                       scale: 1, 
-                      backgroundColor: 'var(--bg-cream)',
-                      color: 'var(--brand-orange)',
-                      borderColor: 'var(--brand-orange)'
+                      backgroundColor: 'rgba(255, 255, 255, 0.1)', // Glass Effect
+                      color: '#fff', // White Icon
+                      borderColor: 'rgba(255, 255, 255, 0.3)'
                     },
                     hover: { 
                       scale: 1.1, 
-                      backgroundColor: social.color, 
+                      backgroundColor: social.color, // Native Color on Hover
                       color: '#fff',
                       borderColor: social.color
                     }
@@ -111,7 +108,8 @@ const Socials = () => {
                     alignItems: 'center',
                     justifyContent: 'center',
                     border: '2px solid',
-                    boxShadow: '0 5px 15px rgba(0,0,0,0.05)',
+                    boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.1)', // Glass Shadow
+                    backdropFilter: 'blur(5px)',
                     cursor: 'pointer'
                   }}
                 >
@@ -125,10 +123,10 @@ const Socials = () => {
                   }}
                   style={{ 
                     display: 'block', 
-                    marginTop: '5px', 
-                    fontSize: '0.8rem', 
-                    color: 'var(--text-muted)',
-                    fontWeight: 'bold' 
+                    marginTop: '10px', 
+                    fontSize: '0.9rem', 
+                    color: '#fff', // White Text
+                    fontWeight: '500' 
                   }}
                 >
                   {social.name}

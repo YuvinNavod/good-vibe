@@ -1,22 +1,9 @@
 import React, { useRef } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const Hero = () => {
-  // 1. Setup Scroll Hooks for Rotation Logic
-  const targetRef = useRef(null);
-  const { scrollY } = useScroll({
-    target: targetRef,
-    offset: ["start start", "end start"] // Track scroll from top of hero to bottom
-  });
-
-  // Map scroll pixels (0px to 500px) to Degrees (0deg to 180deg)
-  const rotateValue = useTransform(scrollY, [0, 1000], [0, 360]);
-  
-  // Optional: Parallax effect to move the images slightly slower than the scroll
-  const yValue = useTransform(scrollY, [0, 500], [0, 100]); 
-
-  // --- Existing Animations ---
+  // --- Animation Variants ---
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -33,19 +20,17 @@ const Hero = () => {
   return (
     <section 
       id="hero" 
-      ref={targetRef}
       className="d-flex align-items-center position-relative"
       style={{ 
         minHeight: '100vh', 
-        backgroundColor: 'var(--bg-cream)',
         overflow: 'hidden',
-        paddingBottom: '150px' // Add padding so text doesn't overlap images
+        paddingBottom: '150px' 
       }}
     >
       {/* Background Circle */}
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 0.05 }}
+        animate={{ scale: 1, opacity: 0.1 }} 
         transition={{ duration: 3, ease: "easeInOut" }}
         style={{
           position: 'absolute',
@@ -54,7 +39,8 @@ const Hero = () => {
           width: '50vw',
           height: '50vw',
           borderRadius: '50%',
-          background: 'linear-gradient(135deg, var(--brand-yellow), var(--brand-orange))',
+          background: '#fff', 
+          filter: 'blur(80px)', 
           zIndex: 0
         }}
       />
@@ -70,11 +56,10 @@ const Hero = () => {
               <motion.h1 
                 variants={itemVariants}
                 style={{ 
-                  fontSize: 'clamp(3rem, 5vw, 5rem)',
+                  fontSize: 'clamp(3rem, 5vw, 6rem)', 
                   fontWeight: '700',
-                  background: `linear-gradient(to right, var(--brand-orange), #ff9e00)`,
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
+                  color: 'var(--brand-yellow)', 
+                  textShadow: '0 4px 15px rgba(0,0,0,0.1)', 
                   marginBottom: '1rem'
                 }}
               >
@@ -85,37 +70,37 @@ const Hero = () => {
                 variants={itemVariants}
                 className="lead"
                 style={{ 
-                  color: 'var(--text-muted)', 
+                  color: '#fff', 
                   fontSize: '1.5rem',
                   fontWeight: '300',
-                  marginBottom: '2.5rem'
+                  marginBottom: '2.5rem',
+                  opacity: 0.95
                 }}
               >
                 Vibrant living made simple, meaningful, and sustainable.
               </motion.p>
 
               <motion.div variants={itemVariants} className="d-flex justify-content-center gap-3">
-                {/* LINKED BUTTON: Goes to Programs */}
                 <Button 
                   href="#programs"
                   size="lg"
                   style={{
-                    backgroundColor: 'var(--brand-orange)',
-                    borderColor: 'var(--brand-orange)',
-                    color: '#fff',
+                    backgroundColor: 'var(--brand-yellow)',
+                    borderColor: 'var(--brand-yellow)',
+                    color: '#e65100', 
                     borderRadius: '50px',
-                    padding: '10px 30px'
+                    padding: '12px 35px',
+                    fontWeight: 'bold'
                   }}
                 >
                   Start Your Journey
                 </Button>
 
-                {/* LINKED BUTTON: Goes to Philosophy */}
                 <Button 
                   href="#philosophy"
-                  variant="outline-secondary" 
+                  variant="outline-light" 
                   size="lg"
-                  style={{ borderRadius: '50px', padding: '10px 30px' }}
+                  style={{ borderRadius: '50px', padding: '12px 35px' }}
                 >
                   Explore Philosophy
                 </Button>
@@ -127,48 +112,63 @@ const Hero = () => {
       </Container>
 
       {/* =======================================================
-          NEW SCROLL ANIMATION SECTION (Bottom Center)
+          MARQUEE SECTION 
           ======================================================= */}
       <motion.div
         style={{
           position: 'absolute',
-          bottom: '-150px', // Pulls it down to hide the bottom half initially
-          left: '50%',
-          x: '-50%', // Centers it horizontally
-          y: yValue, // Optional parallax movement
-          width: '500px', // Adjust size as needed
-          height: '500px',
+          bottom: '50px', 
+          left: '0',
+          width: '100%',
+          // REMOVED: y: yValue (This stops it from moving down on scroll)
           zIndex: 1,
           display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          overflow: 'hidden', 
+          maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' 
         }}
       >
-        {/* 1. The Rotating Ring (15.png) - Sits behind or around */}
-        <motion.img
-          src={process.env.PUBLIC_URL + "/assets/15.png"}
-          alt="Rotating Aura"
-          style={{
-            position: 'absolute',
-            width: '100%',
-            height: '100%',
-            objectFit: 'contain',
-            rotate: rotateValue // Binds rotation to scroll
+        {/* The Track */}
+        <motion.div
+          style={{ 
+            display: 'flex', 
+            width: 'max-content', 
+            alignItems: 'center'
           }}
-        />
-
-        {/* 2. The Static Center (16.png) - Sits in the middle */}
-        <img
-          src={process.env.PUBLIC_URL + "/assets/16.png"}
-          alt="Static Core"
-          style={{
-            position: 'absolute',
-            width: '40%', // Adjust relative size of center image
-            height: '40%',
-            objectFit: 'contain',
-            zIndex: 2 // Ensures it sits on top of the rotating ring
+          animate={{ x: ["-50%", "0%"] }} 
+          transition={{ 
+            repeat: Infinity, 
+            ease: "linear", 
+            duration: 100 
           }}
-        />
+        >
+          {/* Image 1 */}
+          <img
+            src={process.env.PUBLIC_URL + "/assets/vibrants-strip.png"}
+            alt="Vibrant Life Icons"
+            style={{
+              height: '15vh',       
+              minHeight: '100px',   
+              width: 'auto',        
+              marginRight: '-1px',  
+              mixBlendMode: 'multiply', 
+              opacity: 1
+            }}
+          />
+          
+          {/* Image 2 (Duplicate) */}
+          <img
+            src={process.env.PUBLIC_URL + "/assets/vibrants-strip.png"}
+            alt="Vibrant Life Icons Loop"
+            style={{
+              height: '15vh',
+              minHeight: '100px',
+              width: 'auto',
+              marginRight: '-1px',
+              mixBlendMode: 'multiply',
+              opacity: 1
+            }}
+          />
+        </motion.div>
       </motion.div>
     </section>
   );

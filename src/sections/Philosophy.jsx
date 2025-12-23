@@ -1,9 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { motion, useScroll } from 'framer-motion';
+import { motion, useScroll, AnimatePresence } from 'framer-motion';
 
 const Philosophy = () => {
-  // Corrected Data - Cleaned of all citation tags
   const steps = [
     {
       id: 1,
@@ -17,29 +16,21 @@ const Philosophy = () => {
       title: "Vision",
       quote: "“A vibrant world awakened by purpose, clarity, energy and vitality in every life.”",
       description: "We envision a vibrant world where every life is awakened by purpose, clarity, energy, and vitality. A world in which people live with deeper meaning, brighter focus, and a renewed sense of well-being.",
-      color: "var(--brand-orange)"
+      color: "var(--brand-yellow)"
     },
     {
       id: 3,
       title: "Mission",
       quote: "“Ignite your best self.”",
       description: "Our mission is to gently awaken the inner potential within each person, helping them live with purpose, meaning, clarity & vitality. A vibrant life doesn’t need to be complicated. Through simple practices, meaningful choices, and sustainable actions, we empower you to ignite your best self and thrive every day.",
-      color: "#ff9e00"
-    }
+      color: "var(--brand-yellow)"
+    },
   ];
 
   const targetRef = useRef(null);
-  
-  // Track scroll progress specifically for this section
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-    offset: ["start start", "end end"]
-  });
-
-  // State to track which slide is active based on scroll
+  const { scrollYProgress } = useScroll({ target: targetRef, offset: ["start start", "end end"] });
   const [activeStep, setActiveStep] = useState(0);
 
-  // Update active step based on scroll position
   useEffect(() => {
     return scrollYProgress.onChange((latest) => {
       if (latest < 0.33) setActiveStep(0);
@@ -48,37 +39,33 @@ const Philosophy = () => {
     });
   }, [scrollYProgress]);
 
+  // Helper to get current data
+  const currentData = steps[activeStep];
+
   return (
     <section 
       ref={targetRef} 
       id="philosophy"
-      style={{ 
-        height: '300vh', // Tall section for scrolling effect
-        position: 'relative' 
-      }}
+      style={{ height: '300vh', position: 'relative' }}
     >
       {/* Sticky Container */}
       <div 
         className="sticky-top d-flex align-items-center justify-content-center"
         style={{ 
           height: '100vh', 
-          backgroundColor: 'var(--bg-cream)',
           overflow: 'hidden'
         }}
       >
-        {/* Background Decorative Circle */}
+        {/* Background Decorative Circle - White Glow */}
         <motion.div
-          animate={{
-            backgroundColor: steps[activeStep].color,
-            scale: [1, 1.1, 1],
-          }}
-          transition={{ duration: 1 }}
+          animate={{ scale: [1, 1.1, 1] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           style={{
             position: 'absolute',
-            width: '60vw',
-            height: '60vw',
+            width: '60vw', height: '60vw',
             borderRadius: '50%',
-            opacity: 0.08,
+            backgroundColor: '#fff', 
+            opacity: 0.1, 
             zIndex: 0,
             filter: 'blur(80px)',
           }}
@@ -90,65 +77,61 @@ const Philosophy = () => {
               
               <h5 
                 className="text-uppercase mb-4" 
-                style={{ letterSpacing: '3px', color: 'var(--text-muted)' }}
+                style={{ letterSpacing: '3px', color: 'rgba(255,255,255,0.8)' }} 
               >
                 Our Philosophy
               </h5>
 
-              <div style={{ position: 'relative', minHeight: '400px' }}>
-                {steps.map((step, index) => (
-                  <motion.div
-                    key={step.id}
-                    initial={{ opacity: 0, y: 50, scale: 0.95 }}
-                    animate={{ 
-                      opacity: activeStep === index ? 1 : 0,
-                      y: activeStep === index ? 0 : 50,
-                      scale: activeStep === index ? 1 : 0.95,
-                      display: activeStep === index ? 'block' : 'none'
-                    }}
-                    transition={{ duration: 0.8, ease: "easeInOut" }}
-                    style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      margin: 'auto'
-                    }}
-                  >
-                    <h2 
-                      className="display-4 fw-bold mb-4" 
-                      style={{ color: step.color }}
+              {/* Glass Card Container for Text */}
+              <div 
+                className="glass-card p-5" 
+                style={{ 
+                  // REMOVED fixed height. 
+                  // Added transition to smooth out height changes
+                  transition: 'all 0.3s ease',
+                  width: '100%'
+                }}
+              >
+                {/* AnimatePresence handles the smooth fade between texts */}
+                <AnimatePresence mode='wait'>
+                    <motion.div
+                        key={currentData.id} // Key change triggers animation
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.5, ease: "easeOut" }}
                     >
-                      {step.title}
-                    </h2>
+                        <h2 
+                        className="display-4 fw-bold mb-4" 
+                        style={{ color: 'var(--brand-yellow)' }}
+                        >
+                        {currentData.title}
+                        </h2>
 
-                    <div className="mb-4">
-                      <p 
-                        className="fs-3 fst-italic" 
-                        style={{ color: 'var(--text-dark)', fontFamily: 'Georgia, serif' }}
-                      >
-                        {step.quote}
-                      </p>
-                    </div>
+                        <div className="mb-4">
+                        <p 
+                            className="fs-3 fst-italic" 
+                            style={{ color: '#fff', fontFamily: 'Georgia, serif' }}
+                        >
+                            {currentData.quote}
+                        </p>
+                        </div>
 
-                    <hr 
-                      style={{ 
-                        width: '50px', 
-                        margin: '0 auto 30px', 
-                        borderTop: `3px solid ${step.color}`,
-                        opacity: 1
-                      }} 
-                    />
+                        <hr 
+                        style={{ 
+                            width: '50px', margin: '0 auto 30px', 
+                            borderTop: `3px solid var(--brand-yellow)`, opacity: 1 
+                        }} 
+                        />
 
-                    <p 
-                      className="lead" 
-                      style={{ color: '#555', lineHeight: '1.8' }}
-                    >
-                      {step.description}
-                    </p>
-
-                  </motion.div>
-                ))}
+                        <p 
+                        className="lead mb-0" // mb-0 removes extra bottom space
+                        style={{ color: '#fff', lineHeight: '1.8', opacity: 0.9 }} 
+                        >
+                        {currentData.description}
+                        </p>
+                    </motion.div>
+                </AnimatePresence>
               </div>
 
               {/* Scroll Indicators (Dots) */}
@@ -158,12 +141,10 @@ const Philosophy = () => {
                     key={index}
                     animate={{
                       scale: activeStep === index ? 1.5 : 1,
-                      backgroundColor: activeStep === index ? 'var(--brand-orange)' : '#ccc'
+                      backgroundColor: activeStep === index ? 'var(--brand-yellow)' : 'rgba(255,255,255,0.5)'
                     }}
                     style={{
-                      width: '10px',
-                      height: '10px',
-                      borderRadius: '50%',
+                      width: '10px', height: '10px', borderRadius: '50%',
                     }}
                   />
                 ))}
