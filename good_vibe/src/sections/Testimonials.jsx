@@ -4,7 +4,7 @@ import { FaQuoteLeft, FaStar } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 const Testimonials = () => {
-  // --- Test Data based on your Programs ---
+  // --- Test Data ---
   const stories = [
     {
       id: 1,
@@ -36,18 +36,17 @@ const Testimonials = () => {
     <section 
       id="testimonials" 
       style={{ 
-        backgroundColor: 'var(--bg-cream)', 
-        padding: 'var(--section-padding) 0',
+        padding: '100px 0',
         position: 'relative'
       }}
     >
       <Container>
         {/* Section Header */}
         <div className="text-center mb-5">
-          <h5 style={{ color: 'var(--brand-orange)', letterSpacing: '2px', textTransform: 'uppercase' }}>
+          <h5 style={{ color: '#fff', letterSpacing: '2px', textTransform: 'uppercase', opacity: 0.8 }}>
             Success Stories
           </h5>
-          <h2 className="display-5 fw-bold" style={{ color: 'var(--text-dark)' }}>
+          <h2 className="display-5 fw-bold" style={{ color: 'var(--brand-yellow)' }}>
             Hear from Our Vibrant Community
           </h2>
         </div>
@@ -64,47 +63,55 @@ const Testimonials = () => {
                 indicators={true} 
                 controls={false} 
                 interval={5000} 
-                variant="dark"
-                className="pb-5" // Padding bottom for indicators
+                variant="white" 
+                className="pb-5" 
               >
                 {stories.map((story) => (
                   <Carousel.Item key={story.id}>
                     <Card 
-                      className="text-center border-0 p-4 p-md-5 mx-3"
+                      className="text-center border-0 p-4 p-md-5 mx-3 glass-card"
                       style={{ 
-                        backgroundColor: '#fff', 
+                        // Using a semi-transparent white background so dark text is readable
+                        backgroundColor: 'rgba(255, 255, 255, 0.9)', 
                         borderRadius: '20px',
-                        boxShadow: '0 15px 40px rgba(0,0,0,0.05)'
                       }}
                     >
                       <Card.Body>
                         {/* Quote Icon */}
                         <div className="mb-4">
-                          <FaQuoteLeft size={40} color="var(--brand-yellow)" style={{ opacity: 0.5 }} />
+                          <FaQuoteLeft size={40} color="var(--brand-orange)" style={{ opacity: 0.8 }} />
                         </div>
 
-                        {/* The Quote */}
-                        <Card.Text className="fs-4 fst-italic mb-4" style={{ color: '#555', lineHeight: '1.6' }}>
+                        {/* The Quote - CHANGED TO DARK GREY */}
+                        <Card.Text className="fs-4 fst-italic mb-4" style={{ color: '#333', lineHeight: '1.6' }}>
                           "{story.quote}"
                         </Card.Text>
 
                         {/* Stars */}
                         <div className="mb-4">
                           {[...Array(story.rating)].map((_, i) => (
-                            <FaStar key={i} color="var(--brand-orange)" size={20} className="mx-1" />
+                            <FaStar key={i} color="#FFD700" size={20} className="mx-1" />
                           ))}
                         </div>
 
                         {/* Author Details */}
                         <div>
-                          <h5 className="fw-bold mb-1">{story.name}</h5>
-                          <span className="text-muted d-block small">{story.role}</span>
+                          {/* Name - CHANGED TO ORANGE/DARK */}
+                          <h5 className="fw-bold mb-1" style={{ color: 'var(--brand-orange)' }}>{story.name}</h5>
+                          
+                          {/* Role - CHANGED TO GREY */}
+                          <span className="d-block small" style={{ color: '#666' }}>{story.role}</span>
+                          
+                          {/* Badge - CHANGED TO LIGHT ORANGE BG with DARK TEXT */}
                           <span 
-                            className="badge mt-2" 
+                            className="badge mt-3" 
                             style={{ 
-                              backgroundColor: 'var(--bg-light-orange)', 
+                              backgroundColor: 'rgba(255, 95, 45, 0.1)', 
                               color: 'var(--brand-orange)',
-                              fontWeight: 'normal'
+                              fontWeight: 'bold',
+                              border: '1px solid rgba(255, 95, 45, 0.2)',
+                              padding: '8px 12px',
+                              borderRadius: '20px'
                             }}
                           >
                             {story.program}
