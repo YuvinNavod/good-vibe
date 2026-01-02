@@ -11,7 +11,7 @@ export const vibrantsData = [
       "Move Your Body with 'Vibrant Poses'",
       "Have a good Sleep that generate 'Peaceful Healing Vibrations'"
     ],
-    icon: "FaRunning" // We will map these strings to icons later
+    icon: "FaRunning" 
   },
   {
     id: 2,
@@ -126,7 +126,7 @@ export const vibrantsData = [
     icon: "FaTree"
   },
 
-  // --- ACCELERATOR VIBRANTS (3) ---
+  // --- ACCELERATOR VIBRANTS (4) ---
   {
     id: 9,
     title: "Differently Vibrant",
@@ -174,5 +174,21 @@ export const vibrantsData = [
       "Fostering intergenerational wellbeing"
     ],
     icon: "FaGlobeAmericas"
+  },
+  {
+    id: 12,
+    title: "Sustainably Vibrant",
+    category: "Accelerator",
+    tagline: "Thrive fully, live lightly, and shine for the long run",
+    description: "At GoodVibe, being sustainably vibrant means thriving in a way that honors both your well-being and the world around you. It's about making choices that fuel your energy, nurture your body and mind, and protect our planet. Sustainability is not just about environment; it's about creating lasting habits, mindful connections, and resilient lifestyles that keep you vibrant for the long term.",
+    items: [
+      "Mindful Lifestyle Choices",
+      "Eco-Friendly Practices",
+      "Leaning & Minimalism in Practice",
+      "Mental & Emotional Sustainability",
+      "Learning & Growth",
+      "Vibrant Community Engagement"
+    ],
+    icon: "FaSun" // Based on the sun icon in your screenshot
   }
 ];

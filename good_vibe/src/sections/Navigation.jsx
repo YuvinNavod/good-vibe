@@ -5,19 +5,17 @@ import { motion } from 'framer-motion';
 const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
 
-  // Handle scroll to change navbar background
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 50);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Theme Colors
+  const brandOrange = "#ff5c2d";
+  const brandYellow = "#ffdb46";
 
   return (
     <motion.div
@@ -28,15 +26,16 @@ const Navigation = () => {
       <Navbar 
         expand="lg" 
         fixed="top"
-        className="py-2" 
-        // This handles the Hamburger Icon color: 'dark' gives white icon, 'light' gives black icon
-        variant={scrolled ? 'light' : 'dark'} 
+        className="py-3" 
+        // Logic: On yellow background, we need dark icons. On orange background, we need light icons.
+        variant={scrolled ? 'dark' : 'light'} 
         style={{
-          // Top: Transparent (shows orange bg), Scrolled: White
-          backgroundColor: scrolled ? 'rgba(255, 255, 255, 0.95)' : 'transparent', 
+          // Top: Transparent (to show Hero Yellow), Scrolled: Brand Orange
+          backgroundColor: scrolled ? brandOrange : 'transparent', 
           backdropFilter: scrolled ? 'blur(10px)' : 'none',
-          boxShadow: scrolled ? '0 4px 20px rgba(0,0,0,0.1)' : 'none',
-          transition: 'all 0.3s ease'
+          boxShadow: scrolled ? '0 4px 30px rgba(0,0,0,0.1)' : 'none',
+          transition: 'all 0.4s ease-in-out',
+          borderBottom: scrolled ? `2px solid ${brandYellow}` : 'none'
         }}
       >
         <Container>
@@ -48,19 +47,16 @@ const Navigation = () => {
               style={{ 
                 height: '50px', 
                 width: 'auto', 
-                objectFit: 'contain',
-                // Optional: Invert logo color if needed based on background
-                // filter: scrolled ? 'none' : 'brightness(0) invert(1)' 
+                //filter: scrolled ? 'brightness(0) invert(1)' : 'none' // Turns logo white/light when on orange bg
               }} 
             />
             <span 
               style={{ 
-                fontFamily: 'Philosopher, sans-serif',
-                fontSize: '1.5rem', 
-                fontWeight: 'bold',
-                // Text is White at top, Orange when scrolled
-                color: scrolled ? 'var(--brand-orange)' : '#fff', 
-                letterSpacing: '1px'
+                fontSize: '1.8rem', 
+                fontWeight: '900', // Fat letters to match Hero
+                color: scrolled ? brandYellow : brandOrange, 
+                letterSpacing: '-1px',
+                transition: 'color 0.4s ease'
               }}
             >
               GoodVibe
@@ -70,8 +66,7 @@ const Navigation = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" style={{ border: 'none' }} />
           
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto align-items-center gap-3">
-              {/* Links turn from White to Dark based on scroll */}
+            <Nav className="ms-auto align-items-center gap-2">
               {['About', 'Philosophy', 'The Vibrants', 'Programs', 'Stories'].map((item, index) => {
                  const linkHref = item === 'The Vibrants' ? '#vibrants' : 
                                   item === 'Stories' ? '#testimonials' : 
@@ -80,9 +75,14 @@ const Navigation = () => {
                    <Nav.Link 
                      key={index}
                      href={linkHref} 
+                     className="px-3"
                      style={{ 
-                       color: scrolled ? '#333' : '#fff', 
-                       fontWeight: '500' 
+                       color: scrolled ? brandYellow : brandOrange, 
+                       fontWeight: '700',
+                       fontSize: '1rem',
+                       textTransform: 'uppercase',
+                       letterSpacing: '1px',
+                       transition: 'color 0.4s ease'
                      }}
                    >
                      {item}
@@ -90,30 +90,35 @@ const Navigation = () => {
                  )
               })}
               
-              {/* UPDATED BUTTON: Links to #socials section */}
+              {/* JOIN COMMUNITY BUTTON */}
               <Button 
                 href="#socials"
-                variant={scrolled ? "outline-warning" : "light"}
-                className="ms-2"
+                className="ms-lg-3"
                 style={{ 
-                  borderRadius: '30px', 
-                  padding: '8px 25px',
-                  fontWeight: 'bold',
-                  // Top: White Button with Orange Text
-                  // Scrolled: Transparent with Orange Border & Text
-                  backgroundColor: scrolled ? 'transparent' : '#fff',
-                  borderColor: scrolled ? 'var(--brand-orange)' : '#fff',
-                  color: 'var(--brand-orange)' 
+                  borderRadius: '50px', 
+                  padding: '10px 28px',
+                  fontWeight: '800',
+                  textTransform: 'uppercase',
+                  fontSize: '0.9rem',
+                  // Top: Orange button on Yellow Bg
+                  // Scrolled: Yellow button on Orange Bg
+                  backgroundColor: scrolled ? brandYellow : brandOrange,
+                  borderColor: scrolled ? brandYellow : brandOrange,
+                  color: scrolled ? brandOrange : brandYellow,
+                  boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
+                  transition: 'all 0.3s ease'
                 }}
                 onMouseEnter={(e) => {
-                  e.target.style.backgroundColor = 'var(--brand-orange)';
+                  e.target.style.transform = 'scale(1.05)';
+                  e.target.style.backgroundColor = '#000';
                   e.target.style.color = '#fff';
-                  e.target.style.borderColor = 'var(--brand-orange)';
+                  e.target.style.borderColor = '#000';
                 }}
                 onMouseLeave={(e) => {
-                  e.target.style.backgroundColor = scrolled ? 'transparent' : '#fff';
-                  e.target.style.color = 'var(--brand-orange)';
-                  e.target.style.borderColor = scrolled ? 'var(--brand-orange)' : '#fff';
+                  e.target.style.transform = 'scale(1)';
+                  e.target.style.backgroundColor = scrolled ? brandYellow : brandOrange;
+                  e.target.style.color = scrolled ? brandOrange : brandYellow;
+                  e.target.style.borderColor = scrolled ? brandYellow : brandOrange;
                 }}
               >
                 Join Community

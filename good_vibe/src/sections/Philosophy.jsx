@@ -1,6 +1,6 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import { motion, useScroll, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { Container, Row, Col, Card } from 'react-bootstrap';
+import { motion } from 'framer-motion';
 
 const Philosophy = () => {
   const steps = [
@@ -9,151 +9,143 @@ const Philosophy = () => {
       title: "Purpose",
       quote: "“A vibrant life for everyone.”",
       description: "At GoodVibe, we believe life is meant to be lived fully, joyfully, and with purpose. Our purpose is to empower every individual to experience life that is vibrant in every way. We help you live vibrantly through simplicity, meaningful choices, and sustainable habits that nurture both your well-being and the world around you.",
-      color: "var(--brand-yellow)"
+      accentColor: "#ff5c2d", // Purpose Orange
+      image: "/assets/purpose_main.png" 
     },
     {
       id: 2,
       title: "Vision",
       quote: "“A vibrant world awakened by purpose, clarity, energy and vitality in every life.”",
       description: "We envision a vibrant world where every life is awakened by purpose, clarity, energy, and vitality. A world in which people live with deeper meaning, brighter focus, and a renewed sense of well-being.",
-      color: "var(--brand-yellow)"
+      accentColor: "#ff5c2d", // Standardized to Orange
+      image: "/assets/vision_main.jpg" 
     },
     {
       id: 3,
       title: "Mission",
       quote: "“Ignite your best self.”",
       description: "Our mission is to gently awaken the inner potential within each person, helping them live with purpose, meaning, clarity & vitality. A vibrant life doesn’t need to be complicated. Through simple practices, meaningful choices, and sustainable actions, we empower you to ignite your best self and thrive every day.",
-      color: "var(--brand-yellow)"
+      accentColor: "#ff5c2d", // Standardized to Orange
+      image: "/assets/mission_main.jpg" 
     },
   ];
 
-  const targetRef = useRef(null);
-  const { scrollYProgress } = useScroll({ target: targetRef, offset: ["start start", "end end"] });
-  const [activeStep, setActiveStep] = useState(0);
-
-  useEffect(() => {
-    return scrollYProgress.onChange((latest) => {
-      if (latest < 0.33) setActiveStep(0);
-      else if (latest < 0.66) setActiveStep(1);
-      else setActiveStep(2);
-    });
-  }, [scrollYProgress]);
-
-  // Helper to get current data
-  const currentData = steps[activeStep];
-
   return (
     <section 
-      ref={targetRef} 
-      id="philosophy"
-      style={{ height: '300vh', position: 'relative' }}
+      id="philosophy" 
+      style={{ 
+        padding: '100px 0',
+        background: 'linear-gradient(135deg, #ffdb46 0%, #ffc107 100%)',
+        overflow: 'hidden'
+      }}
     >
-      {/* Sticky Container */}
-      <div 
-        className="sticky-top d-flex align-items-center justify-content-center"
-        style={{ 
-          height: '100vh', 
-          overflow: 'hidden'
-        }}
-      >
-        {/* Background Decorative Circle - White Glow */}
-        <motion.div
-          animate={{ scale: [1, 1.1, 1] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          style={{
-            position: 'absolute',
-            width: '60vw', height: '60vw',
-            borderRadius: '50%',
-            backgroundColor: '#fff', 
-            opacity: 0.1, 
-            zIndex: 0,
-            filter: 'blur(80px)',
-          }}
-        />
+      <Container>
+        {/* Main Section Topic */}
+        <div className="text-center mb-5 pb-lg-4">
+          <motion.h2 
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            style={{ 
+              color: '#ff5c2d', 
+              fontWeight: '900', 
+              fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
+              textTransform: 'uppercase' 
+            }}
+          >
+            Good Vibe Philosophy
+          </motion.h2>
+          <div style={{ width: '80px', height: '5px', backgroundColor: '#ff5c2d', margin: '15px auto' }}></div>
+        </div>
 
-        <Container style={{ position: 'relative', zIndex: 1 }}>
-          <Row className="justify-content-center">
-            <Col md={10} lg={8} className="text-center">
-              
-              <h5 
-                className="text-uppercase mb-4" 
-                style={{ letterSpacing: '3px', color: 'rgba(255,255,255,0.8)' }} 
-              >
-                Our Philosophy
-              </h5>
-
-              {/* Glass Card Container for Text */}
-              <div 
-                className="glass-card p-5" 
+        {/* Philosophy Blocks */}
+        <div className="d-flex flex-column gap-5">
+          {steps.map((step, index) => (
+            <motion.div
+              key={step.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+              <Card 
+                className="border-0 shadow-sm"
                 style={{ 
-                  // REMOVED fixed height. 
-                  // Added transition to smooth out height changes
-                  transition: 'all 0.3s ease',
-                  width: '100%'
+                  borderRadius: '40px', 
+                  overflow: 'hidden', 
+                  backgroundColor: 'rgba(255, 255, 255, 0.4)', 
+                  border: `4px solid ${step.accentColor}`, 
+                  boxShadow: `15px 15px 0px ${step.accentColor}`,
+                  backdropFilter: 'blur(10px)'
                 }}
               >
-                {/* AnimatePresence handles the smooth fade between texts */}
-                <AnimatePresence mode='wait'>
-                    <motion.div
-                        key={currentData.id} // Key change triggers animation
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        transition={{ duration: 0.5, ease: "easeOut" }}
-                    >
-                        <h2 
-                        className="display-4 fw-bold mb-4" 
-                        style={{ color: 'var(--brand-yellow)' }}
-                        >
-                        {currentData.title}
-                        </h2>
+                <Row className={`g-0 align-items-stretch ${index % 2 !== 0 ? 'flex-row-reverse' : ''}`}>
+                  
+                  {/* Text Content Column */}
+                  <Col lg={7} className="p-4 p-lg-5 text-start">
+                    <h3 style={{ 
+                      color: step.accentColor, 
+                      fontWeight: '900', 
+                      fontSize: 'clamp(2rem, 4vw, 3rem)',
+                      textTransform: 'uppercase',
+                      marginBottom: '1rem'
+                    }}>
+                      {step.title}
+                    </h3>
+                    
+                    <p style={{ 
+                      fontFamily: "'Playfair Display', serif",
+                      fontStyle: 'italic',
+                      fontSize: 'clamp(1.1rem, 2vw, 1.5rem)',
+                      fontWeight: '700',
+                      // FIXED: Color is now consistently step.accentColor (#ff5c2d)
+                      color: step.accentColor, 
+                      marginBottom: '1.5rem'
+                    }}>
+                      {step.quote}
+                    </p>
 
-                        <div className="mb-4">
-                        <p 
-                            className="fs-3 fst-italic" 
-                            style={{ color: '#fff', fontFamily: 'Georgia, serif' }}
-                        >
-                            {currentData.quote}
-                        </p>
-                        </div>
+                    <div style={{ 
+                      width: '50px', 
+                      height: '3px', 
+                      backgroundColor: step.accentColor, 
+                      marginBottom: '1.5rem' 
+                    }}></div>
 
-                        <hr 
+                    <p style={{ 
+                      fontSize: '1.15rem', 
+                      lineHeight: '1.8', 
+                      color: '#212529',
+                      fontWeight: '500',
+                      textAlign: 'justify' 
+                    }}>
+                      {step.description}
+                    </p>
+                  </Col>
+
+                  {/* Image Column */}
+                  <Col lg={5} style={{ minHeight: '400px' }}>
+                    <div style={{ height: '100%', width: '100%', overflow: 'hidden' }}>
+                      <Card.Img 
+                        src={process.env.PUBLIC_URL + step.image} 
+                        alt={step.title}
                         style={{ 
-                            width: '50px', margin: '0 auto 30px', 
-                            borderTop: `3px solid var(--brand-yellow)`, opacity: 1 
-                        }} 
-                        />
+                          height: '100%', 
+                          width: '100%', 
+                          objectFit: 'cover',
+                          borderLeft: index % 2 === 0 ? `4px solid ${step.accentColor}` : 'none',
+                          borderRight: index % 2 !== 0 ? `4px solid ${step.accentColor}` : 'none'
+                        }}
+                      />
+                    </div>
+                  </Col>
 
-                        <p 
-                        className="lead mb-0" // mb-0 removes extra bottom space
-                        style={{ color: '#fff', lineHeight: '1.8', opacity: 0.9 }} 
-                        >
-                        {currentData.description}
-                        </p>
-                    </motion.div>
-                </AnimatePresence>
-              </div>
-
-              {/* Scroll Indicators (Dots) */}
-              <div className="d-flex justify-content-center gap-2 mt-5">
-                {steps.map((_, index) => (
-                  <motion.div
-                    key={index}
-                    animate={{
-                      scale: activeStep === index ? 1.5 : 1,
-                      backgroundColor: activeStep === index ? 'var(--brand-yellow)' : 'rgba(255,255,255,0.5)'
-                    }}
-                    style={{
-                      width: '10px', height: '10px', borderRadius: '50%',
-                    }}
-                  />
-                ))}
-              </div>
-
-            </Col>
-          </Row>
-        </Container>
-      </div>
+                </Row>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </Container>
     </section>
   );
 };

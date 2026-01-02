@@ -1,20 +1,22 @@
 import React from 'react';
-import { Container, Row, Col, Button, Form, InputGroup } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import { motion } from 'framer-motion';
-// Imported the specific icons you need
-import { FaFacebookF, FaYoutube, FaWhatsapp, FaTiktok, FaPaperPlane } from 'react-icons/fa';
+// Imported the specific icons needed
+import { FaFacebookF, FaYoutube, FaWhatsapp, FaTiktok } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer style={{ position: 'relative', marginTop: '50px' }}>
+    <footer style={{ position: 'relative', backgroundColor: '#ffdb46' }}>
       
       {/* ==============================================
           PART 1: CTA SECTION (Join Community)
+          Now sitting on a #ffdb46 (Yellow) Background
           ============================================== */}
       <div 
         style={{ 
           position: 'relative', 
           zIndex: 2, 
+          paddingTop: '50px',
           marginBottom: '-80px' 
         }}
       >
@@ -26,34 +28,34 @@ const Footer = () => {
             viewport={{ once: true }}
             className="p-5 text-center text-white"
             style={{
-              background: 'linear-gradient(135deg, var(--brand-orange), #ff9e00)',
+              background: 'linear-gradient(135deg, #ff5c2d, #ff9e00)',
               borderRadius: '30px',
               boxShadow: '0 20px 50px rgba(255, 95, 45, 0.3)'
             }}
           >
-            <h2 className="fw-bold mb-3">Start Your Vibrant Journey Today</h2>
-            <p className="lead mb-4" style={{ opacity: 0.9 }}>
+            <h2 className="fw-bold mb-3" style={{ textTransform: 'uppercase', letterSpacing: '1px' }}>
+              Start Your Vibrant Journey Today
+            </h2>
+            <p className="lead mb-4" style={{ opacity: 0.9, fontWeight: '500' }}>
               At GoodVibe, we believe that a vibrant life is within everyone's reach. 
               Join our community to ignite your best self.
             </p>
             
             <div className="d-flex justify-content-center gap-3 flex-wrap">
-              {/* Links to Socials Section */}
               <Button 
                 href="#socials"
                 variant="light" 
                 size="lg" 
-                style={{ color: 'var(--brand-orange)', fontWeight: 'bold', borderRadius: '50px', padding: '12px 35px' }}
+                style={{ color: '#ff5c2d', fontWeight: 'bold', borderRadius: '50px', padding: '12px 35px' }}
               >
                 Join Our Community
               </Button>
 
-              {/* Engagement Forums*/}
               <Button 
                 href="#programs"
                 variant="outline-light" 
                 size="lg" 
-                style={{ borderRadius: '50px', padding: '12px 35px' }}
+                style={{ borderRadius: '50px', padding: '12px 35px', fontWeight: '600' }}
               >
                 Engagement Forums
               </Button>
@@ -64,21 +66,22 @@ const Footer = () => {
 
       {/* ==============================================
           PART 2: MAIN FOOTER LINKS
+          Dark charcoal section
           ============================================== */}
       <div 
         style={{ 
-          backgroundColor: '#2c2c2c', // Dark charcoal for contrast
+          backgroundColor: '#2c2c2c', 
           color: '#fff',
-          paddingTop: '120px', // Space for the CTA box above
+          paddingTop: '150px', // Increased space for the overlapping CTA box
           paddingBottom: '40px'
         }}
       >
         <Container>
           <Row className="gy-5">
             {/* Brand & Intro */}
-            <Col lg={4} md={6}>
-              <h3 className="mb-3" style={{ color: 'var(--brand-yellow)' }}>GoodVibe</h3>
-              <p className="text-white-50">
+            <Col lg={5} md={12}>
+              <h3 className="mb-3" style={{ color: '#ffdb46', fontWeight: '900', textTransform: 'uppercase' }}>GoodVibe</h3>
+              <p className="text-white-50" style={{ maxWidth: '400px', lineHeight: '1.8' }}>
                 An Advisory Group committed to empowering individuals and nations to live vibrant lives through 
                 holistic wellbeing and energy.
               </p>
@@ -88,77 +91,48 @@ const Footer = () => {
             </Col>
 
             {/* Quick Links */}
-            <Col lg={2} md={6}>
-              <h5 className="text-white mb-4">Quick Links</h5>
-              <ul className="list-unstyled text-white-50" style={{ lineHeight: '2.5' }}>
-                <li><a href="#hero" className="text-decoration-none text-white-50 hover-white">Home</a></li>
-                <li><a href="#about" className="text-decoration-none text-white-50 hover-white">Who We Are</a></li>
-                <li><a href="#philosophy" className="text-decoration-none text-white-50 hover-white">Philosophy</a></li>
-                <li><a href="#vibrants" className="text-decoration-none text-white-50 hover-white">The 11 Vibrants</a></li>
-                <li><a href="#programs" className="text-decoration-none text-white-50 hover-white">Programs</a></li>
+            <Col lg={3} md={6}>
+              <h5 className="text-white mb-4" style={{ fontWeight: '700' }}>Quick Links</h5>
+              <ul className="list-unstyled text-white-50" style={{ lineHeight: '2.5', fontWeight: '500' }}>
+                <li><a href="#hero" className="text-decoration-none text-white-50 hover-yellow">Home</a></li>
+                <li><a href="#about" className="text-decoration-none text-white-50 hover-yellow">Who We Are</a></li>
+                <li><a href="#philosophy" className="text-decoration-none text-white-50 hover-yellow">Philosophy</a></li>
+                <li><a href="#vibrants" className="text-decoration-none text-white-50 hover-yellow">The Vibrants</a></li>
+                <li><a href="#programs" className="text-decoration-none text-white-50 hover-yellow">Programs</a></li>
               </ul>
             </Col>
 
             {/* Contact Info & Socials */}
-            <Col lg={3} md={6}>
-              <h5 className="text-white mb-4">Contact Us</h5>
-              <ul className="list-unstyled text-white-50" style={{ lineHeight: '2' }}>
-                <li><a href="https://www.goodvibe.lk" target="_blank" rel="noopener noreferrer" className="text-white-50 text-decoration-none">www.goodvibe.lk</a></li>
-                <li>hello@goodvibe.lk</li>
-                <li className="mt-3">
+            <Col lg={4} md={6}>
+              <h5 className="text-white mb-4" style={{ fontWeight: '700' }}>Contact Us</h5>
+              <ul className="list-unstyled text-white-50" style={{ lineHeight: '2', fontWeight: '500' }}>
+                <li>
+                  <a href="https://www.goodvibe.lk" target="_blank" rel="noopener noreferrer" className="text-white-50 text-decoration-none hover-yellow">
+                    www.goodvibe.lk
+                  </a>
+                </li>
+                <li className="mb-4">hello@goodvibe.lk</li>
+                <li>
                   <div className="d-flex gap-3">
-                    {/* Updated Social Icons with Links */}
-                    
-                    {/* Facebook */}
                     <SocialIcon 
                       icon={<FaFacebookF />} 
                       link="https://www.facebook.com/Goodvibe"
                     />
-
-                    {/* YouTube */}
                     <SocialIcon 
                       icon={<FaYoutube />} 
                       link="https://www.youtube.com/results?search_query=Goodvibe+By+Wealthy+Nation"
                     />
-                    
-                    {/* WhatsApp */}
-                    {/* Replace YOUR_NUMBER with actual number */}
                     <SocialIcon 
                       icon={<FaWhatsapp />} 
-                      link="https://wa.me/YOUR_PHONE_NUMBER_HERE"
+                      link="https://wa.me/YOUR_PHONE_NUMBER" 
                     />
-
-                    {/* TikTok */}
                     <SocialIcon 
                       icon={<FaTiktok />} 
                       link="https://www.tiktok.com/@Goodvibe"
                     />
-                    
                   </div>
                 </li>
               </ul>
-            </Col>
-
-            {/* Newsletter */}
-            <Col lg={3} md={6}>
-              <h5 className="text-white mb-4">Stay Updated</h5>
-              <p className="text-white-50 small">Get the latest vibe tips directly to your inbox.</p>
-              <InputGroup className="mb-3">
-                <Form.Control
-                  placeholder="Your Email"
-                  aria-label="Your Email"
-                  style={{ borderRadius: '20px 0 0 20px', border: 'none' }}
-                />
-                <Button 
-                  style={{ 
-                    backgroundColor: 'var(--brand-orange)', 
-                    border: 'none', 
-                    borderRadius: '0 20px 20px 0' 
-                  }}
-                >
-                  <FaPaperPlane />
-                </Button>
-              </InputGroup>
             </Col>
           </Row>
 
@@ -171,6 +145,14 @@ const Footer = () => {
           </Row>
         </Container>
       </div>
+
+      {/* Global hover effect for links */}
+      <style>{`
+        .hover-yellow:hover {
+          color: #ffdb46 !important;
+          transition: 0.3s;
+        }
+      `}</style>
     </footer>
   );
 };
@@ -185,8 +167,8 @@ const SocialIcon = ({ icon, link }) => (
   >
     <div 
       style={{
-        width: '35px',
-        height: '35px',
+        width: '40px',
+        height: '40px',
         borderRadius: '50%',
         backgroundColor: 'rgba(255,255,255,0.1)',
         display: 'flex',
@@ -194,10 +176,17 @@ const SocialIcon = ({ icon, link }) => (
         justifyContent: 'center',
         cursor: 'pointer',
         color: '#fff',
-        transition: '0.3s'
+        transition: '0.3s',
+        border: '1px solid rgba(255,255,255,0.1)'
       }}
-      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--brand-orange)'}
-      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.1)'}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.backgroundColor = '#ff5c2d';
+        e.currentTarget.style.borderColor = '#ff5c2d';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.1)';
+        e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)';
+      }}
     >
       {icon}
     </div>

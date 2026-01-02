@@ -26,22 +26,21 @@ const Programs = () => {
       id="programs" 
       style={{ 
         padding: '100px 0',
-        position: 'relative'
+        position: 'relative',
+        // 1. UPDATED TO GRADIENT BACKGROUND
+        background: 'linear-gradient(135deg, #ffdb46 0%, #ffc107 100%)' 
       }}
     >
       <Container>
         {/* Header */}
         <div className="text-center mb-5">
-          <h2 style={{ color: 'var(--brand-yellow)', fontWeight: '700' }}>Engagement Forums</h2>
-          <p className="lead" style={{ color: '#fff', opacity: 0.9 }}>
+          <h2 style={{ color: '#ff5c2d', fontWeight: '900', fontSize: 'clamp(2.5rem, 5vw, 4rem)', textTransform: 'uppercase' }}>Engagement Forums</h2>
+          <p className="lead" style={{ color: '#333', opacity: 0.9, fontWeight: '600' }}>
             Curated learning programs for every stage of life
           </p>
         </div>
 
-        {/* =================================================================
-            DESKTOP VIEW (Visible on Large screens and up)
-            Structure: Left Sidebar Tabs + Right Content Card
-           ================================================================= */}
+        {/* DESKTOP VIEW */}
         <div className="d-none d-lg-block">
           <Tab.Container 
             id="program-tabs" 
@@ -49,7 +48,6 @@ const Programs = () => {
             onSelect={(k) => setActiveKey(k)}
           >
             <Row>
-              {/* LEFT SIDE: Navigation Menu */}
               <Col lg={4} className="mb-4">
                 <Nav variant="pills" className="flex-column gap-2">
                   {programsData.map((program) => {
@@ -61,9 +59,9 @@ const Programs = () => {
                         <Nav.Link 
                           eventKey={program.id}
                           style={{
-                            backgroundColor: isActive ? 'var(--brand-yellow)' : 'rgba(255,255,255,0.1)', 
-                            color: isActive ? '#e65100' : '#fff', 
-                            border: isActive ? 'none' : '1px solid rgba(255,255,255,0.2)',
+                            backgroundColor: isActive ? '#ff5c2d' : 'rgba(255,255,255,0.5)', 
+                            color: isActive ? '#fff' : '#ff5c2d', 
+                            border: isActive ? 'none' : '1px solid rgba(255, 92, 45, 0.2)',
                             borderRadius: '15px',
                             textAlign: 'left',
                             padding: '15px 20px',
@@ -71,25 +69,24 @@ const Programs = () => {
                             alignItems: 'center',
                             transition: 'all 0.3s ease',
                             cursor: 'pointer',
-                            boxShadow: isActive ? '0 5px 15px rgba(0,0,0,0.1)' : 'none',
-                            backdropFilter: 'blur(5px)'
+                            boxShadow: isActive ? '0 8px 20px rgba(230, 81, 0, 0.2)' : 'none',
                           }}
                         >
                           <div 
                             style={{
-                              backgroundColor: isActive ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,0.1)',
+                              backgroundColor: isActive ? 'rgba(255,255,255,0.2)' : 'rgba(255,92,45,0.1)',
                               padding: '10px',
                               borderRadius: '50%',
                               marginRight: '15px',
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
-                              color: isActive ? '#e65100' : '#fff'
+                              color: isActive ? '#fff' : '#ff5c2d'
                             }}
                           >
                             <Icon size={18} />
                           </div>
-                          <span style={{ fontWeight: '600', fontSize: '1.05rem' }}>{program.title}</span>
+                          <span style={{ fontWeight: '700', fontSize: '1.05rem' }}>{program.title}</span>
                         </Nav.Link>
                       </Nav.Item>
                     );
@@ -97,16 +94,16 @@ const Programs = () => {
                 </Nav>
               </Col>
 
-              {/* RIGHT SIDE: Content Display (Transparent Glass Card) */}
               <Col lg={8}>
                 <Card 
-                  className="border-0 glass-card"
+                  className="border-0 shadow-sm"
                   style={{ 
-                    borderRadius: '20px', 
+                    borderRadius: '30px', 
                     overflow: 'hidden', 
                     minHeight: '500px',
-                    backgroundColor: 'rgba(255, 255, 255, 0.15)', 
-                    border: '1px solid rgba(255, 255, 255, 0.3)'
+                    backgroundColor: 'rgba(255, 255, 255, 0.4)', 
+                    border: '4px solid #ff5c2d', 
+                    boxShadow: '12px 12px 0px rgba(255, 92, 45, 0.1)'
                   }}
                 >
                   <Card.Body className="p-4 p-md-5">
@@ -120,7 +117,6 @@ const Programs = () => {
                             exit={{ opacity: 0, x: -20 }}
                             transition={{ duration: 0.3 }}
                           >
-                            {/* Content Component to reuse */}
                             <ProgramContent program={program} />
                           </motion.div>
                         )
@@ -133,10 +129,7 @@ const Programs = () => {
           </Tab.Container>
         </div>
 
-        {/* =================================================================
-            MOBILE VIEW (Visible on Medium screens and below)
-            Structure: Vertical Accordion 
-           ================================================================= */}
+        {/* MOBILE VIEW */}
         <div className="d-block d-lg-none">
           <Accordion defaultActiveKey="corporate" className="glass-accordion">
             {programsData.map((program) => {
@@ -146,8 +139,8 @@ const Programs = () => {
                   eventKey={program.id} 
                   key={program.id}
                   style={{ 
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)', 
-                    border: '1px solid rgba(255,255,255,0.2)',
+                    backgroundColor: 'rgba(255, 255, 255, 0.6)', 
+                    border: '2px solid #ff5c2d',
                     borderRadius: '15px',
                     marginBottom: '15px',
                     overflow: 'hidden'
@@ -157,22 +150,21 @@ const Programs = () => {
                     <div className="d-flex align-items-center" style={{ width: '100%' }}>
                       <div 
                         style={{
-                          backgroundColor: 'rgba(255,255,255,0.2)',
+                          backgroundColor: 'rgba(255,92,45,0.1)',
                           padding: '10px',
                           borderRadius: '50%',
                           marginRight: '15px',
-                          color: '#fff'
+                          color: '#ff5c2d'
                         }}
                       >
                         <Icon size={16} />
                       </div>
-                      <span style={{ fontWeight: '600', color: 'var(--brand-yellow)', fontSize: '1.1rem' }}>
+                      <span style={{ fontWeight: '800', color: '#ff5c2d', fontSize: '1.1rem' }}>
                         {program.title}
                       </span>
                     </div>
                   </Accordion.Header>
-                  <Accordion.Body style={{ color: '#fff', backgroundColor: 'rgba(0,0,0,0.1)' }}>
-                    {/* Reusing the same content structure */}
+                  <Accordion.Body style={{ color: '#333', backgroundColor: 'rgba(255,255,255,0.3)' }}>
                     <ProgramContent program={program} isMobile={true} />
                   </Accordion.Body>
                 </Accordion.Item>
@@ -183,71 +175,82 @@ const Programs = () => {
 
       </Container>
 
-      {/* CSS Override for Accordion to match theme */}
       <style>{`
         .glass-accordion .accordion-button {
           background-color: transparent !important;
-          color: #fff !important;
+          color: #ff5c2d !important;
           box-shadow: none !important;
         }
         .glass-accordion .accordion-button:not(.collapsed) {
-          background-color: rgba(255, 255, 255, 0.1) !important;
-          color: var(--brand-yellow) !important;
+          background-color: rgba(255, 92, 45, 0.1) !important;
+          color: #ff5c2d !important;
+          font-weight: 800;
         }
         .glass-accordion .accordion-button::after {
-          filter: invert(1); /* Makes arrow white */
+          filter: sepia(100%) saturate(300%) hue-rotate(338deg);
         }
       `}</style>
     </section>
   );
 };
 
-// --- Helper Component to avoid code duplication ---
+// --- Helper Component ---
 const ProgramContent = ({ program, isMobile }) => (
   <>
-    <h2 className="mb-3" style={{ color: 'var(--brand-yellow)', fontSize: isMobile ? '1.5rem' : '2rem' }}>{program.title}</h2>
-    <p className="mb-4" style={{ color: '#fff', opacity: 0.9, fontSize: isMobile ? '1rem' : '1.25rem' }}>{program.summary}</p>
+    <h2 className="mb-3" style={{ color: '#ff5c2d', fontWeight: '800', fontSize: isMobile ? '1.5rem' : '2.5rem' }}>{program.title}</h2>
+    
+    {/* 2. SUMMARY MADE ITALIC */}
+    <p className="mb-4" style={{ 
+      color: '#333', 
+      fontWeight: '600', 
+      fontSize: isMobile ? '1rem' : '1.15rem',
+      fontStyle: 'italic' // Added italics here
+    }}>
+      {program.summary}
+    </p>
     
     {/* Key Specs */}
     <div className="d-flex flex-wrap gap-2 gap-md-3 mb-4">
-      <Badge bg="light" text="dark" style={{ backgroundColor: 'rgba(255,255,255,0.8) !important' }} className="border px-3 py-2 d-flex align-items-center">
-        <FaClock className="me-2 text-warning" /> {program.details.duration}
+      <Badge bg="white" text="dark" style={{ border: '1px solid #ff5c2d' }} className="px-3 py-2 d-flex align-items-center">
+        <FaClock className="me-2" color="#ff5c2d" /> {program.details.duration}
       </Badge>
-      <Badge bg="light" text="dark" style={{ backgroundColor: 'rgba(255,255,255,0.8) !important' }} className="border px-3 py-2 d-flex align-items-center">
-        <FaLayerGroup className="me-2 text-warning" /> {program.details.modules}
+      <Badge bg="white" text="dark" style={{ border: '1px solid #ff5c2d' }} className="px-3 py-2 d-flex align-items-center">
+        <FaLayerGroup className="me-2" color="#ff5c2d" /> {program.details.modules}
       </Badge>
-      <Badge bg="warning" text="dark" className="px-3 py-2">
+      
+      {/* 3. CHANGED BLUE BOX TO BRAND ORANGE */}
+      <Badge style={{ backgroundColor: '#ff5c2d', color: '#fff' }} className="px-3 py-2">
         {program.details.mode}
       </Badge>
     </div>
 
-    <hr className="my-4" style={{ borderColor: 'rgba(255,255,255,0.3)' }} />
+    <hr className="my-4" style={{ borderColor: 'rgba(255, 92, 45, 0.3)' }} />
 
     {/* Audience */}
-    <h5 className="mb-3" style={{ color: 'var(--brand-yellow)' }}>Who is this for?</h5>
+    <h5 className="mb-3" style={{ color: '#ff5c2d', fontWeight: '700' }}>Who is this for?</h5>
     <ul className="list-unstyled mb-4">
       {program.details.audience.map((item, i) => (
         <li key={i} className="mb-2 d-flex align-items-start">
-          <FaCheckCircle className="mt-1 me-2" color="var(--brand-yellow)" size={16} />
-          <span style={{ color: '#fff' }}>{item}</span>
+          <FaCheckCircle className="mt-1 me-2" color="#ff5c2d" size={16} />
+          <span style={{ color: '#333', fontWeight: '500' }}>{item}</span>
         </li>
       ))}
     </ul>
 
     {/* Modality */}
-    <h5 className="mb-3" style={{ color: 'var(--brand-yellow)' }}>What will we do?</h5>
+    <h5 className="mb-3" style={{ color: '#ff5c2d', fontWeight: '700' }}>What will we do?</h5>
     <div className="d-flex flex-wrap gap-2">
       {program.details.modality.map((mod, i) => (
         <span 
           key={i}
           style={{
-            backgroundColor: 'rgba(255, 255, 255, 0.15)',
+            backgroundColor: '#ff5c2d',
             color: '#fff',
-            padding: '8px 15px',
-            borderRadius: '20px',
+            padding: '8px 18px',
+            borderRadius: '50px',
             fontSize: '0.85rem',
-            fontWeight: '500',
-            border: '1px solid rgba(255, 255, 255, 0.3)'
+            fontWeight: '600',
+            boxShadow: '0 4px 10px rgba(255, 92, 45, 0.2)'
           }}
         >
           {mod}

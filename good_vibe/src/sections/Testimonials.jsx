@@ -4,7 +4,7 @@ import { FaQuoteLeft, FaStar } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 const Testimonials = () => {
-  // --- Test Data ---
+  // --- Test Data (Text Unchanged) ---
   const stories = [
     {
       id: 1,
@@ -37,18 +37,21 @@ const Testimonials = () => {
       id="testimonials" 
       style={{ 
         padding: '100px 0',
-        position: 'relative'
+        position: 'relative',
+        backgroundColor: '#ffdb46' // UPDATED BACKGROUND COLOR
       }}
     >
       <Container>
         {/* Section Header */}
         <div className="text-center mb-5">
-          <h5 style={{ color: '#fff', letterSpacing: '2px', textTransform: 'uppercase', opacity: 0.8 }}>
+          {/* Changed color to Orange for visibility on Yellow BG */}
+          <h5 style={{ color: '#ff5c2d', letterSpacing: '2px', textTransform: 'uppercase', fontWeight: '700' }}>
             Success Stories
           </h5>
-          <h2 className="display-5 fw-bold" style={{ color: 'var(--brand-yellow)' }}>
+          <h2 className="display-5 fw-bold" style={{ color: '#ff5c2d', fontWeight: '900', textTransform: 'uppercase' }}>
             Hear from Our Vibrant Community
           </h2>
+          <div style={{ width: '60px', height: '4px', backgroundColor: '#ff5c2d', margin: '15px auto', borderRadius: '10px' }} />
         </div>
 
         {/* Testimonial Carousel */}
@@ -63,55 +66,64 @@ const Testimonials = () => {
                 indicators={true} 
                 controls={false} 
                 interval={5000} 
-                variant="white" 
+                variant="dark" // Changed to dark indicators for yellow background
                 className="pb-5" 
               >
                 {stories.map((story) => (
                   <Carousel.Item key={story.id}>
                     <Card 
-                      className="text-center border-0 p-4 p-md-5 mx-3 glass-card"
+                      className="text-center border-0 p-4 p-md-5 mx-3"
                       style={{ 
-                        // Using a semi-transparent white background so dark text is readable
-                        backgroundColor: 'rgba(255, 255, 255, 0.9)', 
-                        borderRadius: '20px',
+                        backgroundColor: '#ffffff', 
+                        borderRadius: '30px',
+                        border: '4px solid #ff5c2d', // Shaded border style
+                        boxShadow: '12px 12px 0px rgba(255, 92, 45, 0.15)',
+                        margin: '0 12px 20px 0' // Compensation for shadow
                       }}
                     >
                       <Card.Body>
                         {/* Quote Icon */}
                         <div className="mb-4">
-                          <FaQuoteLeft size={40} color="var(--brand-orange)" style={{ opacity: 0.8 }} />
+                          <FaQuoteLeft size={40} color="#ff5c2d" style={{ opacity: 0.2 }} />
                         </div>
 
-                        {/* The Quote - CHANGED TO DARK GREY */}
-                        <Card.Text className="fs-4 fst-italic mb-4" style={{ color: '#333', lineHeight: '1.6' }}>
+                        {/* The Quote */}
+                        <Card.Text 
+                          className="mb-4" 
+                          style={{ 
+                            color: '#333', 
+                            lineHeight: '1.6', 
+                            fontSize: '1.4rem', 
+                            fontFamily: "'Playfair Display', serif", 
+                            fontStyle: 'italic',
+                            fontWeight: '500'
+                          }}
+                        >
                           "{story.quote}"
                         </Card.Text>
 
                         {/* Stars */}
                         <div className="mb-4">
                           {[...Array(story.rating)].map((_, i) => (
-                            <FaStar key={i} color="#FFD700" size={20} className="mx-1" />
+                            <FaStar key={i} color="#ff5c2d" size={20} className="mx-1" />
                           ))}
                         </div>
 
                         {/* Author Details */}
                         <div>
-                          {/* Name - CHANGED TO ORANGE/DARK */}
-                          <h5 className="fw-bold mb-1" style={{ color: 'var(--brand-orange)' }}>{story.name}</h5>
+                          <h5 className="fw-bold mb-1" style={{ color: '#ff5c2d', fontSize: '1.5rem' }}>{story.name}</h5>
+                          <span className="d-block mb-3" style={{ color: '#666', fontWeight: '600' }}>{story.role}</span>
                           
-                          {/* Role - CHANGED TO GREY */}
-                          <span className="d-block small" style={{ color: '#666' }}>{story.role}</span>
-                          
-                          {/* Badge - CHANGED TO LIGHT ORANGE BG with DARK TEXT */}
+                          {/* Program Badge */}
                           <span 
-                            className="badge mt-3" 
                             style={{ 
-                              backgroundColor: 'rgba(255, 95, 45, 0.1)', 
-                              color: 'var(--brand-orange)',
+                              backgroundColor: '#ff5c2d', 
+                              color: '#fff',
                               fontWeight: 'bold',
-                              border: '1px solid rgba(255, 95, 45, 0.2)',
-                              padding: '8px 12px',
-                              borderRadius: '20px'
+                              padding: '8px 20px',
+                              borderRadius: '50px',
+                              fontSize: '0.85rem',
+                              display: 'inline-block'
                             }}
                           >
                             {story.program}
@@ -127,6 +139,17 @@ const Testimonials = () => {
         </Row>
 
       </Container>
+
+      {/* Custom styles for carousel indicators to match brand orange */}
+      <style>{`
+        .carousel-indicators [data-bs-target] {
+          background-color: #ff5c2d !important;
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          margin: 0 5px;
+        }
+      `}</style>
     </section>
   );
 };

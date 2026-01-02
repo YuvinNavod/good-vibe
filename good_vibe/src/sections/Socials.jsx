@@ -10,7 +10,6 @@ const Socials = () => {
       id: 1, 
       name: "WhatsApp", 
       icon: <FaWhatsapp size={30} />, 
-      // Replace YOUR_PHONE_NUMBER_HERE with real number
       url: "https://wa.me/YOUR_PHONE_NUMBER_HERE", 
       color: "#25D366" 
     },
@@ -49,7 +48,8 @@ const Socials = () => {
       id="socials"
       className="py-5"
       style={{ 
-        // REMOVED: backgroundColor: '#fff' -> Lets global orange gradient show
+        // UPDATED: Background color with a smooth gradient
+        background: 'linear-gradient(135deg, #ff722f 0%, #ff9e00 100%)',
         position: 'relative',
         padding: '100px 0'
       }}
@@ -58,16 +58,17 @@ const Socials = () => {
         <Row className="align-items-center justify-content-center text-center">
           
           <Col md={12} className="mb-5">
-            <h2 className="display-6 fw-bold" style={{ color: 'var(--brand-yellow)' }}>
+            {/* Header matches the "Fat" header style from previous sections */}
+            <h2 className="display-6 fw-bold" style={{ color: 'var(--brand-yellow)', textTransform: 'uppercase', letterSpacing: '2px' }}>
               Join Our Vibrant Community Online
             </h2>
             <div 
               style={{ 
                 width: '60px', 
-                height: '3px', 
-                backgroundColor: '#fff', // White divider
+                height: '4px', 
+                backgroundColor: 'rgba(255, 255, 255, 0.6)', 
                 margin: '15px auto',
-                opacity: 0.5
+                borderRadius: '10px'
               }} 
             />
           </Col>
@@ -88,28 +89,28 @@ const Socials = () => {
                   variants={{
                     rest: { 
                       scale: 1, 
-                      backgroundColor: 'rgba(255, 255, 255, 0.1)', // Glass Effect
-                      color: '#fff', // White Icon
+                      backgroundColor: 'rgba(255, 255, 255, 0.15)', // Enhanced Glass Effect
+                      color: '#fff', 
                       borderColor: 'rgba(255, 255, 255, 0.3)'
                     },
                     hover: { 
-                      scale: 1.1, 
-                      backgroundColor: social.color, // Native Color on Hover
+                      scale: 1.15, 
+                      backgroundColor: social.color, 
                       color: '#fff',
                       borderColor: social.color
                     }
                   }}
                   transition={{ duration: 0.3 }}
                   style={{
-                    width: '70px',
-                    height: '70px',
+                    width: '75px',
+                    height: '75px',
                     borderRadius: '50%',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     border: '2px solid',
-                    boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.1)', // Glass Shadow
-                    backdropFilter: 'blur(5px)',
+                    boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.15)', 
+                    backdropFilter: 'blur(8px)',
                     cursor: 'pointer'
                   }}
                 >
@@ -124,9 +125,9 @@ const Socials = () => {
                   style={{ 
                     display: 'block', 
                     marginTop: '10px', 
-                    fontSize: '0.9rem', 
-                    color: '#fff', // White Text
-                    fontWeight: '500' 
+                    fontSize: '0.95rem', 
+                    color: '#fff', 
+                    fontWeight: '600' 
                   }}
                 >
                   {social.name}
