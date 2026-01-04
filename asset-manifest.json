@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/good-vibe/static/css/main.473d9afc.css",
-    "main.js": "/good-vibe/static/js/main.6b587bae.js",
+    "main.js": "/good-vibe/static/js/main.c55482fe.js",
     "static/js/453.0c85b944.chunk.js": "/good-vibe/static/js/453.0c85b944.chunk.js",
     "index.html": "/good-vibe/index.html",
     "main.473d9afc.css.map": "/good-vibe/static/css/main.473d9afc.css.map",
-    "main.6b587bae.js.map": "/good-vibe/static/js/main.6b587bae.js.map",
+    "main.c55482fe.js.map": "/good-vibe/static/js/main.c55482fe.js.map",
     "453.0c85b944.chunk.js.map": "/good-vibe/static/js/453.0c85b944.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.473d9afc.css",
-    "static/js/main.6b587bae.js"
+    "static/js/main.c55482fe.js"
   ]
 }
