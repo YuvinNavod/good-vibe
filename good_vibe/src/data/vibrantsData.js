@@ -113,8 +113,8 @@ export const vibrantsData = [
     id: 8,
     title: "Vibrant Nature",
     category: "Core",
-    tagline: "Reconnect with the environment to restore balance and peace.",
-    description: "Vibrant Nature is about connecting deeply with the natural world and living in harmony with it. It nurtures your sense of wonder, balance, and responsibility toward the environment.",
+    tagline: "Reconnect with nature to restore balance and peace.",
+    description: "Vibrant Nature is about connecting deeply with nature and living in harmony with it. It nurtures a sense of wonder, balance, and responsibility toward the natural world. Vibrant Nature invites a deep reconnection with nature, fostering harmony, reverence, and conscious care for all life.",
     items: [
       "Create a 'Vibrant Space' at home",
       "Use 'Vibrant Colors' of Nature",
@@ -164,7 +164,7 @@ export const vibrantsData = [
     title: "Universally Vibrant",
     category: "Accelerator",
     tagline: "Vibrance grows when we connect with something larger than ourselves.",
-    description: "Universally Vibrant reflects a global harmony of people, communities, and the planet. It is about awakening shared wellbeing, positive energy, and collective upliftment so every life contributes to a more vibrant world.",
+    description: "Universally Vibrant reflects a state of global harmony among people, communities, and the planet. It is about awakening shared wellbeing, positive energy, and collective upliftment where every life contributes to a more vibrant world and a living universe. It represents a holistic state of wellbeing in which individuals, communities, and ecosystems thrive in balance. Rooted in conscious harmony, it invites human life to flow in alignment with the universal rhythm of nature and existence. When we become vibrant individually, we naturally elevate the collective, making the entire universe a more vibrant and harmonious place.",
     items: [
       "Deepening Higher Self Awareness",
       "Inclusive & Empathetic",

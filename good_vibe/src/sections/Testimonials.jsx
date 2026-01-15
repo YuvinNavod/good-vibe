@@ -8,7 +8,7 @@ const Testimonials = () => {
   const stories = [
     {
       id: 1,
-      name: "Sarah Jenkins",
+      name: "Member of GoodVibe Circle",
       role: "Corporate Leader",
       program: "Vibrant Economy & Skills",
       quote: "The GoodVibe corporate program completely shifted our team's energy. We moved from stress and burnout to clarity and purpose. The 'Vibrant Wisdom' tools helped us make decisions with much more confidence.",
@@ -16,7 +16,7 @@ const Testimonials = () => {
     },
     {
       id: 2,
-      name: "David & Elena",
+      name: "Member of GoodVibe Circle",
       role: "Couple",
       program: "Committed Life Partners",
       quote: "We were drifting apart in the noise of daily life. The 'Vibrant Connections' module gave us simple, meaningful practices to reconnect. Our home feels peaceful again.",
@@ -24,7 +24,7 @@ const Testimonials = () => {
     },
     {
       id: 3,
-      name: "Michael Chen",
+      name: "Member of GoodVibe Circle",
       role: "Software Engineer",
       program: "Vibrant Mind",
       quote: "I struggled with focus and anxiety. Learning to 'Power my mind with Vibrant Energies' wasn't just poetic—it was practical. My productivity and happiness have never been higher.",

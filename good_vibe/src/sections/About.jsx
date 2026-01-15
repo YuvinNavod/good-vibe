@@ -23,11 +23,11 @@ const About = () => {
   };
 
   const generalTextStyle = {
-    lineHeight: '1.8',
+    lineHeight: '1.7', // Slightly reduced for tighter feel
     color: '#ffffff',
     fontSize: '1.15rem', 
     fontFamily: "'Segoe UI', Roboto, Helvetica, Arial, sans-serif", 
-    textAlign: 'justify',
+    textAlign: 'left', // FIXED: Changed from justify to remove extra word gaps
     marginBottom: '1rem'
   };
 
@@ -109,8 +109,7 @@ const About = () => {
             >
               <h3 style={subHeaderStyle}>Who We Are</h3>
               <p style={generalTextStyle}>
-                We are an Advisory Group committed to empowering individuals, groups, communities, and nations to live
-                vibrant lives by enhancing their wellbeing and happiness through cultivating vibrant energy across all areas of life.
+                We are an Advisory Group committed to empowering individuals, groups, communities, and nations to live vibrant lives by enhancing their wellbeing and happiness through cultivating vibrant energy across all areas of life.
               </p>
               
               <div className="p-4 mt-4" style={{ 
@@ -194,7 +193,6 @@ const About = () => {
                 style={cardStyle}
               >
                 <div style={generalTextStyle}>
-                    {/* Visible Content - Shows expertise immediately */}
                     <p>
                       GoodVibe’s programs are delivered by a multidisciplinary team of experienced professionals with expertise across multiple domains.
                     </p>
@@ -212,7 +210,7 @@ const About = () => {
                           style={{ overflow: 'hidden' }}
                         >
                           <p>
-                            Through an evidence-based and outcomes-driven approach, the team designs and implements structured wellbeing interventions aligned with organizational objectives, employee engagement, and sustainable performance. 
+                            Through an evidence-based and outcomes-driven approach, the team designs and implements structured wellbeing interventions aligned with organizational objectives, employee engagement, and sustainable performance.
                           </p>
                           <p className="mb-0">
                             By integrating scientific insight, ethical practice, and data-informed evaluation, GoodVibe supports individuals, communities, organizations and nations in building resilient, inclusive, and high-performing workforces.

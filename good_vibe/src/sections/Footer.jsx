@@ -1,7 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { motion } from 'framer-motion';
-// Imported the specific icons needed
 import { FaFacebookF, FaYoutube, FaWhatsapp, FaTiktok } from 'react-icons/fa';
 
 const Footer = () => {
@@ -10,7 +9,6 @@ const Footer = () => {
       
       {/* ==============================================
           PART 1: CTA SECTION (Join Community)
-          Now sitting on a #ffdb46 (Yellow) Background
           ============================================== */}
       <div 
         style={{ 
@@ -36,9 +34,8 @@ const Footer = () => {
             <h2 className="fw-bold mb-3" style={{ textTransform: 'uppercase', letterSpacing: '1px' }}>
               Start Your Vibrant Journey Today
             </h2>
-            <p className="lead mb-4" style={{ opacity: 0.9, fontWeight: '500' }}>
-              At GoodVibe, we believe that a vibrant life is within everyone's reach. 
-              Join our community to ignite your best self.
+            <p className="lead mb-4" style={{ opacity: 0.9, fontWeight: '500', textAlign: 'center' }}>
+              At <span style={{ fontFamily: "'El Messiri', sans-serif" }}>GoodVibe</span>, we believe that a vibrant life is within everyone's reach. Join our community to ignite your best self.
             </p>
             
             <div className="d-flex justify-content-center gap-3 flex-wrap">
@@ -66,13 +63,12 @@ const Footer = () => {
 
       {/* ==============================================
           PART 2: MAIN FOOTER LINKS
-          Dark charcoal section
           ============================================== */}
       <div 
         style={{ 
           backgroundColor: '#2c2c2c', 
           color: '#fff',
-          paddingTop: '150px', // Increased space for the overlapping CTA box
+          paddingTop: '150px', 
           paddingBottom: '40px'
         }}
       >
@@ -80,10 +76,11 @@ const Footer = () => {
           <Row className="gy-5">
             {/* Brand & Intro */}
             <Col lg={5} md={12}>
-              <h3 className="mb-3" style={{ color: '#ffdb46', fontWeight: '900', textTransform: 'uppercase' }}>GoodVibe</h3>
-              <p className="text-white-50" style={{ maxWidth: '400px', lineHeight: '1.8' }}>
-                An Advisory Group committed to empowering individuals and nations to live vibrant lives through 
-                holistic wellbeing and energy.
+              <h3 className="mb-3" style={{ color: '#ffdb46', fontWeight: '900', textTransform: 'uppercase' }}>
+                <span style={{ fontFamily: "'El Messiri', sans-serif", textTransform: 'none' }}>GoodVibe</span>
+              </h3>
+              <p className="text-white-50" style={{ maxWidth: '400px', lineHeight: '1.7', textAlign: 'left' }}>
+                An Advisory Group committed to empowering individuals and nations to live vibrant lives through holistic wellbeing and energy.
               </p>
               <p className="text-white-50 small">
                 Part of the <strong>Wealthy Nation</strong> initiative.
@@ -111,9 +108,8 @@ const Footer = () => {
                     www.goodvibe.lk
                   </a>
                 </li>
-                <li className="mb-4">hello@goodvibe.lk</li>
                 <li>
-                  <div className="d-flex gap-3">
+                  <div className="d-flex gap-3 mt-3">
                     <SocialIcon 
                       icon={<FaFacebookF />} 
                       link="https://www.facebook.com/Goodvibe"
@@ -140,13 +136,12 @@ const Footer = () => {
 
           <Row>
             <Col className="text-center text-white-50 small">
-              &copy; {new Date().getFullYear()} GoodVibe by Wealthy Nation. All Rights Reserved.
+              &copy; {new Date().getFullYear()} <span style={{ fontFamily: "'El Messiri', sans-serif" }}>GoodVibe</span> by Wealthy Nation. All Rights Reserved.
             </Col>
           </Row>
         </Container>
       </div>
 
-      {/* Global hover effect for links */}
       <style>{`
         .hover-yellow:hover {
           color: #ffdb46 !important;

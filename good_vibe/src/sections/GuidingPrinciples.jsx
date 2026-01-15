@@ -12,7 +12,7 @@ const GuidingPrinciples = () => {
       image: process.env.PUBLIC_URL + "/assets/journey.gif",
       details: [
         "Cultivate deep awareness of body, mind, emotions, and behavior patterns to support conscious and intentional living.",
-        "Guided, Evidence-Informed Practices: Step-by-step practices drawn from wellbeing science, mindfulness, movement, and reflective tools—guided by experienced facilitators.",
+        "Guided, Evidence-Informed Practices: Step-by-step practices drawn from wellbeing science, mindfulness, movement, and reflective tools guided by experienced facilitators.",
         "Measurable Wellbeing Outcomes: Track progress through simple assessments, reflective metrics, and wellbeing indicators to ensure visible and meaningful change.",
         "Integration into Daily Life: Practical tools and routines that translate inner awareness into everyday personal and professional contexts."
       ]
@@ -37,11 +37,11 @@ const GuidingPrinciples = () => {
       summary: "Accelerate Inner Growth Effectively rooted in self-control, commitment, and consistency for sustainable progress.",
       image: process.env.PUBLIC_URL + "/assets/bloom.gif",
       details: [
-        "A High-Impact Program that accelerates your inner growth—faster, deeper, and more effectively.",
+        "A High-Impact Program that accelerates your inner growth faster, deeper, and more effectively.",
         "Transform your inner self through a high-impact, science-aligned growth program.",
         "An intensive inner growth program for faster, meaningful, and lasting transformation.",
         "High-Impact Inner Development for rapid, balanced, and conscious growth.",
-        "Where inner growth accelerates—through structured, high-impact transformation."
+        "Where inner growth accelerates through structured, high-impact transformation."
       ]
     }
   ];

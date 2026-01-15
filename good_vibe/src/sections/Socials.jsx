@@ -4,7 +4,9 @@ import { motion } from 'framer-motion';
 import { FaWhatsapp, FaYoutube, FaFacebookF, FaTiktok, FaGlobe } from 'react-icons/fa';
 
 const Socials = () => {
-  // Social Media Data
+  // Theme Colors
+  const brandYellow = "#ffdb46";
+
   const socialLinks = [
     { 
       id: 1, 
@@ -46,28 +48,40 @@ const Socials = () => {
   return (
     <section 
       id="socials"
-      className="py-5"
       style={{ 
-        // UPDATED: Background color with a smooth gradient
         background: 'linear-gradient(135deg, #ff722f 0%, #ff9e00 100%)',
         position: 'relative',
-        padding: '100px 0'
+        padding: '120px 0',
+        // FIX: This ensures the heading is visible below the fixed Navbar
+        scrollMarginTop: '90px' 
       }}
     >
       <Container>
         <Row className="align-items-center justify-content-center text-center">
           
           <Col md={12} className="mb-5">
-            {/* Header matches the "Fat" header style from previous sections */}
-            <h2 className="display-6 fw-bold" style={{ color: 'var(--brand-yellow)', textTransform: 'uppercase', letterSpacing: '2px' }}>
-              Join Our Vibrant Community Online
-            </h2>
+            {/* Header updated to match "Fat" header style */}
+            <motion.h2 
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              style={{ 
+                color: brandYellow, 
+                fontWeight: '900', 
+                fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+                textTransform: 'uppercase', 
+                letterSpacing: '1px',
+                lineHeight: '1.1'
+              }}
+            >
+              Join Our Vibrant <br className="d-md-none" /> Community Online
+            </motion.h2>
             <div 
               style={{ 
-                width: '60px', 
-                height: '4px', 
-                backgroundColor: 'rgba(255, 255, 255, 0.6)', 
-                margin: '15px auto',
+                width: '80px', 
+                height: '6px', 
+                backgroundColor: brandYellow, 
+                margin: '20px auto',
                 borderRadius: '10px'
               }} 
             />
@@ -89,9 +103,9 @@ const Socials = () => {
                   variants={{
                     rest: { 
                       scale: 1, 
-                      backgroundColor: 'rgba(255, 255, 255, 0.15)', // Enhanced Glass Effect
+                      backgroundColor: 'rgba(255, 255, 255, 0.2)', 
                       color: '#fff', 
-                      borderColor: 'rgba(255, 255, 255, 0.3)'
+                      borderColor: 'rgba(255, 255, 255, 0.4)'
                     },
                     hover: { 
                       scale: 1.15, 
@@ -102,15 +116,15 @@ const Socials = () => {
                   }}
                   transition={{ duration: 0.3 }}
                   style={{
-                    width: '75px',
-                    height: '75px',
+                    width: '85px',
+                    height: '85px',
                     borderRadius: '50%',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    border: '2px solid',
-                    boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.15)', 
-                    backdropFilter: 'blur(8px)',
+                    border: '3px solid',
+                    boxShadow: '0 12px 24px rgba(0, 0, 0, 0.2)', 
+                    backdropFilter: 'blur(10px)',
                     cursor: 'pointer'
                   }}
                 >
@@ -119,15 +133,16 @@ const Socials = () => {
                 
                 <motion.span
                   variants={{
-                    rest: { opacity: 0, y: -10 },
+                    rest: { opacity: 0, y: -5 },
                     hover: { opacity: 1, y: 5 }
                   }}
                   style={{ 
                     display: 'block', 
-                    marginTop: '10px', 
-                    fontSize: '0.95rem', 
+                    marginTop: '12px', 
+                    fontSize: '1rem', 
                     color: '#fff', 
-                    fontWeight: '600' 
+                    fontWeight: '800',
+                    textTransform: 'uppercase'
                   }}
                 >
                   {social.name}
@@ -135,7 +150,6 @@ const Socials = () => {
               </motion.a>
             ))}
           </Col>
-
         </Row>
       </Container>
     </section>

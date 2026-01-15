@@ -12,7 +12,7 @@ const Vibrants = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
   };
 
-  const brandYellow = '#ffdb46'; // Unified Brand Yellow
+  const brandYellow = '#ffdb46'; // Signature Brand Yellow
 
   return (
     <section 
@@ -33,16 +33,21 @@ const Vibrants = () => {
         <Row className="align-items-center w-100">
           <Col lg={6} className="mb-5 mb-lg-0 text-start">
             <motion.div initial="hidden" whileInView="visible" variants={fadeInUp} viewport={{ once: true }}>
-              <h5 style={{ color: '#fff', textTransform: 'uppercase', letterSpacing: '4px', fontSize: '0.9rem', fontWeight: '800', marginBottom: '1.5rem', opacity: 0.9 }}>
+              {/* MAIN TOPIC: LARGE AND BOLD */}
+              <h1 className="display-1 fw-black mb-3" style={{ color: brandYellow, fontWeight: '900', lineHeight: '1.0', textTransform: 'uppercase', letterSpacing: '-2px' }}>
                 The Vibrants
-              </h5>
-              <h1 className="display-3 fw-bold mb-4" style={{ color: brandYellow, lineHeight: '1.1', textTransform: 'uppercase' }}>
-                Ignite your best self.
               </h1>
-              <p className="lead mb-4" style={{ fontWeight: '600', color: '#fff', fontSize: '1.4rem' }}>
+              
+              <h2 className="display-4 fw-bold mb-4" style={{ color: '#fff', textTransform: 'uppercase', opacity: 0.95 }}>
+                Ignite your best self.
+              </h2>
+
+              {/* FRAMEWORK TEXT: ITALICIZED */}
+              <p className="lead mb-4" style={{ fontWeight: '600', color: '#fff', fontSize: '1.6rem', fontStyle: 'italic' }}>
                 A holistic framework of 12 dimensions.
               </p>
-              <p style={{ color: '#fff', lineHeight: '1.8', fontSize: '1.1rem', maxWidth: '90%', opacity: 0.9 }}>
+              
+              <p style={{ color: '#fff', lineHeight: '1.8', fontSize: '1.15rem', maxWidth: '90%', opacity: 0.9 }}>
                 Unlock the 8 Core Vibrants and 4 Accelerator Vibrants to experience life fully, 
                 joyfully, and with purpose. Our evidence-based approach helps you build resilient 
                 wellbeing across every area of your life.
@@ -68,13 +73,13 @@ const Vibrants = () => {
 
 
       {/* ==============================================
-          PART 2: THE ECOSYSTEM (Half Image, Half Vibrants List)
+          PART 2: THE ECOSYSTEM (Half Image, Half Lists)
           ============================================== */}
       <div style={{ padding: '100px 0', backgroundColor: 'rgba(0,0,0,0.05)' }}>
         <Container fluid className="px-lg-5">
           <Row className="align-items-center">
             
-            {/* LEFT SIDE: Half Image (The Ecosystem Circular Graphic) */}
+            {/* LEFT SIDE: Half Image */}
             <Col lg={6} className="text-center mb-5 mb-lg-0">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
@@ -83,14 +88,14 @@ const Vibrants = () => {
                 viewport={{ once: true }}
               >
                 <img 
-                  src={process.env.PUBLIC_URL + "/assets/ecosystem_center.gif"} // Update with your center image path
+                  src={process.env.PUBLIC_URL + "/assets/ecosystem_center.gif"} 
                   alt="The GoodVibe Ecosystem" 
-                  style={{ width: '100%', maxWidth: '700px', filter: 'drop-shadow(0 10px 30px rgba(0,0,0,0.2))' }}
+                  style={{ width: '100%', maxWidth: '750px', filter: 'drop-shadow(0 10px 40px rgba(0,0,0,0.2))' }}
                 />
               </motion.div>
             </Col>
 
-            {/* RIGHT SIDE: Core + Accelerator Vibrants Lists */}
+            {/* RIGHT SIDE: Core + Accelerator Vibrants */}
             <Col lg={6} className="ps-lg-5">
               <motion.div 
                 initial="hidden" 
@@ -100,21 +105,22 @@ const Vibrants = () => {
                 className="p-4 p-md-5"
                 style={{ 
                     borderRadius: '40px', 
-                    background: 'rgba(255, 255, 255, 0.1)', 
-                    backdropFilter: 'blur(10px)',
-                    border: '2px solid rgba(255, 255, 255, 0.2)',
-                    boxShadow: '15px 15px 40px rgba(0,0,0,0.1)'
+                    background: 'rgba(255, 255, 255, 0.12)', 
+                    backdropFilter: 'blur(15px)',
+                    border: '2px solid rgba(255, 255, 255, 0.25)',
+                    boxShadow: '20px 20px 60px rgba(0,0,0,0.1)'
                 }}
               >
-                <h2 className="display-6 fw-bold mb-2" style={{ color: brandYellow, textTransform: 'uppercase' }}>
-                  The GoodVibe Ecosystem
+                {/* FONT UPDATED: Only "GoodVibe" uses El Messiri */}
+                <h2 className="display-5 fw-bold mb-2" style={{ color: brandYellow, textTransform: 'uppercase' }}>
+                  <span style={{ fontFamily: "'El Messiri', sans-serif", textTransform: 'none' }}>GoodVibe</span> Ecosystem
                 </h2>
-                <p style={{ color: '#fff', fontSize: '1.2rem', marginBottom: '2rem', opacity: 0.9 }}>
+                <p style={{ color: '#fff', fontSize: '1.25rem', marginBottom: '2.5rem', opacity: 0.95, fontStyle: 'italic' }}>
                     A seamless integration of 12 dimensions.
                 </p>
 
                 <Row>
-                  {/* Column 1: Core Vibrants */}
+                  {/* Core Vibrants */}
                   <Col md={6}>
                     <h5 className="mb-4" style={{ color: brandYellow, fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>
                       Core Vibrants
@@ -125,10 +131,10 @@ const Vibrants = () => {
                           key={v.id} 
                           whileHover={{ x: 8 }}
                           className="mb-3 d-flex align-items-center" 
-                          style={{ fontSize: '1.1rem', color: '#fff', fontWeight: '600' }}
+                          style={{ fontSize: '1.15rem', color: brandYellow, fontWeight: '700' }}
                         >
                           <span className="me-3 d-flex align-items-center justify-content-center" 
-                                style={{ color: brandYellow, fontWeight: '900', width: '28px', height: '28px', border: `2px solid ${brandYellow}`, borderRadius: '50%', fontSize: '0.8rem' }}>
+                                style={{ color: brandYellow, fontWeight: '900', width: '30px', height: '30px', border: `2px solid ${brandYellow}`, borderRadius: '50%', fontSize: '0.85rem' }}>
                             {v.id}
                           </span>
                           {v.title}
@@ -137,7 +143,7 @@ const Vibrants = () => {
                     </ul>
                   </Col>
 
-                  {/* Column 2: Accelerator Vibrants */}
+                  {/* Accelerator Vibrants */}
                   <Col md={6} className="mt-4 mt-md-0">
                     <h5 className="mb-4" style={{ color: brandYellow, fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>
                       Accelerator Vibrants
@@ -148,11 +154,10 @@ const Vibrants = () => {
                           key={v.id} 
                           whileHover={{ x: 8 }}
                           className="mb-3 d-flex align-items-center" 
-                          style={{ fontSize: '1.1rem', color: '#fff', fontWeight: '600' }}
+                          style={{ fontSize: '1.15rem', color: brandYellow, fontWeight: '700' }}
                         >
-                          {/* Accelerator now matches Core Color (Yellow) */}
                           <span className="me-3 d-flex align-items-center justify-content-center" 
-                                style={{ color: brandYellow, fontWeight: '900', width: '28px', height: '28px', border: `2px solid ${brandYellow}`, borderRadius: '50%', fontSize: '0.8rem' }}>
+                                style={{ color: brandYellow, fontWeight: '900', width: '30px', height: '30px', border: `2px solid ${brandYellow}`, borderRadius: '50%', fontSize: '0.85rem' }}>
                             {v.id}
                           </span>
                           {v.title}
@@ -185,7 +190,7 @@ const Vibrants = () => {
               <Row 
                 key={vibrant.id} 
                 className={`align-items-center mb-5 py-5 ${!isEven ? 'flex-row-reverse' : ''}`}
-                style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.1)' }}
+                style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.15)' }}
               >
                 <Col md={6} className="px-lg-5">
                   <motion.div
@@ -195,25 +200,25 @@ const Vibrants = () => {
                     viewport={{ once: true }}
                   >
                     <div className="d-flex align-items-center mb-3">
-                        <span style={{ fontSize: '3rem', fontWeight: '900', color: 'rgba(255,255,255,0.2)', lineHeight: 1, marginRight: '15px' }}>
+                        <span style={{ fontSize: '3.5rem', fontWeight: '900', color: 'rgba(255,255,255,0.25)', lineHeight: 1, marginRight: '20px' }}>
                             {vibrant.id.toString().padStart(2, '0')}
                         </span>
-                        <h2 className="display-5 fw-bold mb-0" style={{ color: brandYellow, letterSpacing: '-1px' }}>
+                        <h2 className="display-4 fw-bold mb-0" style={{ color: brandYellow, letterSpacing: '-1.5px' }}>
                           {vibrant.title}
                         </h2>
                     </div>
                     
-                    <h5 className="mb-4" style={{ color: '#fff', fontFamily: "'Playfair Display', serif", fontStyle: 'italic', fontSize: '1.4rem' }}>
+                    <h5 className="mb-4" style={{ color: '#fff', fontFamily: "'Playfair Display', serif", fontStyle: 'italic', fontSize: '1.5rem', fontWeight: '600' }}>
                       {vibrant.tagline}
                     </h5>
                     
-                    <p style={{ fontSize: '1.1rem', color: '#fff', opacity: 0.9, lineHeight: '1.8', textAlign: 'justify' }}>
+                    <p style={{ fontSize: '1.2rem', color: '#fff', opacity: 0.95, lineHeight: '1.8', textAlign: 'justify' }}>
                       {vibrant.description}
                     </p>
 
                     <div className="d-flex flex-wrap gap-2 mt-4">
                       {vibrant.items.map((item, i) => (
-                        <span key={i} className="px-3 py-2" style={{ backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: '10px', fontSize: '0.85rem', color: brandYellow, border: `1px solid ${brandYellow}`, fontWeight: '700' }}>
+                        <span key={i} className="px-3 py-2" style={{ backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: '12px', fontSize: '0.9rem', color: brandYellow, border: `1px solid ${brandYellow}`, fontWeight: '700' }}>
                           {item}
                         </span>
                       ))}
@@ -230,7 +235,7 @@ const Vibrants = () => {
                     <img 
                       src={process.env.PUBLIC_URL + `/assets/${vibrant.id}.png`}
                       alt={vibrant.title}
-                      style={{ width: '100%', maxWidth: '450px', filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.4))' }}
+                      style={{ width: '100%', maxWidth: '480px', filter: 'drop-shadow(0 25px 45px rgba(0,0,0,0.4))' }}
                     />
                   </motion.div>
                 </Col>
