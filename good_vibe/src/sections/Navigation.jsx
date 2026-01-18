@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
-  const [expanded, setExpanded] = useState(false); // Track mobile menu state
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,9 +18,10 @@ const Navigation = () => {
   const brandOrange = "#ff5c2d";
   const brandYellow = "#ffdb46";
 
-  // Determine background based on scroll OR mobile expansion
-  const navBg = (scrolled || expanded) ? brandOrange : 'transparent';
-  const textColor = (scrolled || expanded) ? brandYellow : brandOrange;
+  // State Logic
+  const isActive = scrolled || expanded;
+  const navBg = isActive ? brandOrange : 'transparent';
+  const textColor = isActive ? brandYellow : brandOrange;
 
   return (
     <motion.div
@@ -31,45 +32,39 @@ const Navigation = () => {
       <Navbar 
         expand="lg" 
         fixed="top"
-        className="py-3" 
-        onToggle={(isOpen) => setExpanded(isOpen)} // Update state on mobile click
-        variant="dark" // Keeps toggle icon visible
+        className="py-2" // Reduced vertical padding to accommodate larger logo
+        onToggle={(isOpen) => setExpanded(isOpen)}
+        variant="dark" 
         style={{
           backgroundColor: navBg, 
-          backdropFilter: (scrolled || expanded) ? 'blur(10px)' : 'none',
-          boxShadow: (scrolled || expanded) ? '0 4px 30px rgba(0,0,0,0.1)' : 'none',
+          backdropFilter: isActive ? 'blur(10px)' : 'none',
+          boxShadow: isActive ? '0 4px 30px rgba(0,0,0,0.1)' : 'none',
           transition: 'all 0.4s ease-in-out',
           borderBottom: scrolled ? `2px solid ${brandYellow}` : 'none'
         }}
       >
         <Container fluid="xl">
-          <Navbar.Brand href="#hero" className="d-flex align-items-center gap-2">
-            <img 
-              src={process.env.PUBLIC_URL + "/assets/logo.png"} 
+          {/* LOGO SECTION - Removed Text and Increased Logo Size */}
+          <Navbar.Brand href="#hero" className="d-flex align-items-center">
+            <motion.img 
+              // DYNAMIC LOGO: Changes source based on scroll/expansion state
+              src={process.env.PUBLIC_URL + (isActive ? "/assets/logo_light.png" : "/assets/logo.png")} 
               alt="GoodVibe Logo"
-              style={{ height: '50px', width: 'auto' }} 
-            />
-            {/* UPDATED FONT: Applied El Messiri to the word GoodVibe */}
-            <span 
+              initial={false}
+              animate={{ scale: isActive ? 0.9 : 1 }} // Subtle scale effect on scroll
               style={{ 
-                fontSize: '1.8rem', 
-                fontWeight: '900', 
-                color: textColor, 
-                letterSpacing: '-1px',
-                transition: 'color 0.4s ease',
-                fontFamily: "'El Messiri', sans-serif" 
-              }}
-            >
-              GoodVibe
-            </span>
+                height: '75px', // INCREASED SIZE: from 50px to 75px
+                width: 'auto',
+                transition: 'all 0.4s ease'
+              }} 
+            />
           </Navbar.Brand>
 
-          {/* Toggle Button Styling */}
           <Navbar.Toggle 
             aria-controls="basic-navbar-nav" 
             style={{ 
               border: 'none',
-              filter: (scrolled || expanded) ? 'none' : 'invert(43%) sepia(87%) saturate(2331%) hue-rotate(345deg) brightness(101%) contrast(101%)' 
+              filter: isActive ? 'none' : 'invert(43%) sepia(87%) saturate(2331%) hue-rotate(345deg) brightness(101%) contrast(101%)' 
             }} 
           />
           
@@ -110,9 +105,9 @@ const Navigation = () => {
                   fontWeight: '800',
                   textTransform: 'uppercase',
                   fontSize: '0.85rem',
-                  backgroundColor: (scrolled || expanded) ? brandYellow : brandOrange,
-                  borderColor: (scrolled || expanded) ? brandYellow : brandOrange,
-                  color: (scrolled || expanded) ? brandOrange : brandYellow,
+                  backgroundColor: isActive ? brandYellow : brandOrange,
+                  borderColor: isActive ? brandYellow : brandOrange,
+                  color: isActive ? brandOrange : brandYellow,
                   boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
                   whiteSpace: 'nowrap',
                   width: expanded ? '100%' : 'auto' 
